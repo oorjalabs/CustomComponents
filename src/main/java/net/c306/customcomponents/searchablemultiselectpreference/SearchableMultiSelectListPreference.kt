@@ -18,10 +18,10 @@ class SearchableMultiSelectListPreference: MultiSelectListPreference {
 
     constructor(context: Context, attrs:AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    internal var entries: Array<Entry>? = null
-    internal var message: String? = null
-    internal var emptyViewText: String? = null
-    internal var noneSelectedSummary: String? = null
+    var entries: Array<Entry>? = null
+    var message: String? = null
+    var emptyViewText: String? = null
+    var noneSelectedSummary: String? = null
 
     @Parcelize
     data class Entry(
