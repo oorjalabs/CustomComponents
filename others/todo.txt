@@ -2,6 +2,8 @@
 
 v. 0.1.9
 
+    --TBD-- Make preference dialogs internal
+
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
         [ ] Read from clipboard
@@ -11,6 +13,15 @@ v. 0.1.9
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.8.2
+
+    [DONE] Make preference dialogs internal
+
+    [DONE] Reorganise packages, all preferences in one package, another for utils
 
 
 ---------

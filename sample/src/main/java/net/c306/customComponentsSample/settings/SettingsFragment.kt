@@ -3,9 +3,9 @@ package net.c306.customComponentsSample.settings
 import android.os.Bundle
 import android.view.View
 import net.c306.customComponentsSample.R
-import net.c306.customcomponents.CustomPreferenceFragment
-import net.c306.customcomponents.listPreference.UpgradedListPreference
-import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
+import net.c306.customcomponents.preference.CustomPreferenceFragment
+import net.c306.customcomponents.preference.UpgradedListPreference
+import net.c306.customcomponents.preference.SearchableMultiSelectListPreference
 
 /**
  * Test settings fragment

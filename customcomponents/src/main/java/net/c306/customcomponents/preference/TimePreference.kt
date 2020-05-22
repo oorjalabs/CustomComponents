@@ -1,4 +1,4 @@
-package net.c306.customcomponents.timePreference
+package net.c306.customcomponents.preference
 
 import android.content.Context
 import android.content.res.TypedArray

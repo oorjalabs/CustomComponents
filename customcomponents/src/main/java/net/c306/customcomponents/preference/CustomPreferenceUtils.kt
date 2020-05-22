@@ -1,14 +1,8 @@
-package net.c306.customcomponents
+package net.c306.customcomponents.preference
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.preference.Preference
-import net.c306.customcomponents.listPreference.UpgradedListPreference
-import net.c306.customcomponents.listPreference.UpgradedListPreferenceDialogFragment
-import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
-import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreferenceDialogFragment
-import net.c306.customcomponents.timePreference.TimePreference
-import net.c306.customcomponents.timePreference.TimePreferenceDialogFragment
 
 object CustomPreferenceUtils {
     

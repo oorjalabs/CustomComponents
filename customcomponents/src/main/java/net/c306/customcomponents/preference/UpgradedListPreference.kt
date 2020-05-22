@@ -1,4 +1,4 @@
-package net.c306.customcomponents.listPreference
+package net.c306.customcomponents.preference
 
 
 import android.annotation.SuppressLint

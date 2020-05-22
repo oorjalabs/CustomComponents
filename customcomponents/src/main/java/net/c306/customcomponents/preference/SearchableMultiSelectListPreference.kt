@@ -1,4 +1,4 @@
-package net.c306.customcomponents.searchableMultiSelectPreference
+package net.c306.customcomponents.preference
 
 import android.annotation.SuppressLint
 import android.content.Context

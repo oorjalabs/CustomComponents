@@ -1,4 +1,4 @@
-package net.c306.customcomponents.timePreference
+package net.c306.customcomponents.preference
 
 import android.os.Bundle
 import android.text.format.DateFormat
@@ -11,7 +11,7 @@ import net.c306.customcomponents.R
 import java.util.*
 
 
-class TimePreferenceDialogFragment : PreferenceDialogFragmentCompat(), DialogPreference.TargetFragment {
+internal class TimePreferenceDialogFragment : PreferenceDialogFragmentCompat(), DialogPreference.TargetFragment {
     private var timePicker: TimePicker? = null
     
     companion object {

@@ -1,4 +1,4 @@
-package net.c306.customcomponents.searchableMultiSelectPreference
+package net.c306.customcomponents.preference
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,7 @@ import net.c306.customcomponents.R
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
+internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
     
     companion object {
         fun newInstance(key: String): SearchableMultiSelectListPreferenceDialogFragment =

@@ -3,18 +3,18 @@
     
     <PreferenceCategory app:title="Test preferences">
         
-        <net.c306.customcomponents.listPreference.UpgradedListPreference
+        <net.c306.customcomponents.preference.UpgradedListPreference
             app:defaultValue="sort_order_default_129310716349370374"
             app:key="test_list_preference"
             app:summary="%s"
             app:title="Test list preference" />
         
-        <net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
+        <net.c306.customcomponents.preference.SearchableMultiSelectListPreference
             app:key="test_searchable_list_preference"
             app:summary="%s"
             app:title="Test searchable multi select list preference" />
         
-        <net.c306.customcomponents.timePreference.TimePreference
+        <net.c306.customcomponents.preference.TimePreference
             app:defaultValue="510"
             app:key="test_time_picker"
             app:title="Test time picker preference" />

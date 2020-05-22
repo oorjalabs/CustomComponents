@@ -1,4 +1,4 @@
-package net.c306.customcomponents
+package net.c306.customcomponents.preference
 
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat

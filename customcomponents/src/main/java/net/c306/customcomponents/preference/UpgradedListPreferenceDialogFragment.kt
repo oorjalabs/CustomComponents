@@ -1,4 +1,4 @@
-package net.c306.customcomponents.listPreference
+package net.c306.customcomponents.preference
 
 
 import android.annotation.SuppressLint
@@ -17,7 +17,7 @@ import androidx.preference.PreferenceDialogFragmentCompat
 import kotlinx.android.synthetic.main.item_upgraded_list_preference.view.*
 import net.c306.customcomponents.R
 
-class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
+internal class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
     
     companion object {
         fun newInstance(key: String): UpgradedListPreferenceDialogFragment =
