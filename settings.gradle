@@ -1,1 +1,2 @@
 include ':customcomponents'
+include ':sample'

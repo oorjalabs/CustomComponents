@@ -8,6 +8,11 @@ import androidx.core.content.res.TypedArrayUtils
 import androidx.preference.MultiSelectListPreference
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Searchable MultiSelectListPreference with a search field added to search through large list of
+ * entries.
+ * Uses @see [SearchableMultiSelectListPreferenceDialogFragment] to display preference.
+ */
 class SearchableMultiSelectListPreference: MultiSelectListPreference {
     constructor(context : Context) : this(context, null)
 
@@ -22,7 +27,7 @@ class SearchableMultiSelectListPreference: MultiSelectListPreference {
     var message: String? = null
     var emptyViewText: String? = null
     var noneSelectedSummary: String? = null
-
+    
     @Parcelize
     data class Entry(
         /** String that is displayed in list in dialog */

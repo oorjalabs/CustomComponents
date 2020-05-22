@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="text_primary_on_surface">?colorPrimaryVariant</color>
-    <color name="bg_searchable_list_item_focused">@color/grey_800</color>
-    <color name="bg_searchable_list_item_disabled">@color/grey_900</color>
-</resources>
