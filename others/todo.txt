@@ -1,6 +1,6 @@
 
 
-v. 0.1.8
+v. 0.1.9
 
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
@@ -11,6 +11,13 @@ v. 0.1.8
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.8.1
+
+    [DONE] Make static helper methods in TimePreference public
 
 
 ---------

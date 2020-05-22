@@ -67,7 +67,7 @@ class TimePreference : DialogPreference {
     
     companion object {
         
-        internal fun calendarToSavedValue(cal: Calendar): Int {
+        fun calendarToSavedValue(cal: Calendar): Int {
             
             val hours = cal.get(Calendar.HOUR_OF_DAY)
             val minutes = cal.get(Calendar.MINUTE)
@@ -76,7 +76,7 @@ class TimePreference : DialogPreference {
         }
         
         
-        internal fun savedValueToCalendar(fullMins: Int, cal: Calendar, forceInFuture: Boolean = false): Calendar {
+        fun savedValueToCalendar(fullMins: Int, cal: Calendar, forceInFuture: Boolean = false): Calendar {
             
             val hours = fullMins / 60
             val mins = fullMins % 60
