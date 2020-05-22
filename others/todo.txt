@@ -1,6 +1,8 @@
 
 
-v. 0.1.6.2
+v. 0.1.7
+
+    --TBD-- Add time picker preference
 
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
@@ -8,11 +10,22 @@ v. 0.1.6.2
         [ ] Write to clipboard
         [ ] Create intent for url
 
-    --TBD-- Add improved ListPreference
-
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.6.2
+
+    [DONE] Add improved ListPreference
+        [X] Add list preference to add list preference
+        [X] Add list preference dialog and resources to add list preference
+
+    [DONE] Add sample app
+        [X] Test list preference with sample app
+        [X] Test searchable multi select list preference with sample app
 
 
 ---------
