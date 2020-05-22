@@ -1,6 +1,6 @@
 
 
-v. 0.1.6
+v. 0.1.6.2
 
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
@@ -13,6 +13,13 @@ v. 0.1.6
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.6.1
+
+    [DONE] Deleted unused app code
 
 
 ---------
