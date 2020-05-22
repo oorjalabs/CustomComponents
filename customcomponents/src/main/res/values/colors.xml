@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Create resources with these names in app to override these default values -->
+
     <color name="text_primary_on_surface">?colorPrimaryDark</color>
+
+
     <color name="bg_searchable_list_item_activated">@color/activated</color>
     <color name="bg_searchable_list_item_focused">@color/grey_100</color>
     <color name="bg_searchable_list_item_normal">@android:color/transparent</color>
