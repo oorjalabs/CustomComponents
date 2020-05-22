@@ -1,0 +1,32 @@
+
+
+v. 0.1.6
+
+    --TBD-- Add common utils
+        [ ] Read log for app (useful for debugging)
+        [ ] Read from clipboard
+        [ ] Write to clipboard
+        [ ] Create intent for url
+
+    --TBD-- Add improved ListPreference
+
+    --TBD-- Add improved DatePicker
+
+    --TBD-- Make resources explicitly public
+
+
+---------
+
+v 0.1.5a
+
+    [DONE] Add this file - todo.txt
+
+    [DONE] Remove unused code from build.gradle
+
+
+---------
+
+v 0.1.5
+
+    [DONE] Make internal variables public so they can be accessed and set from app
+
