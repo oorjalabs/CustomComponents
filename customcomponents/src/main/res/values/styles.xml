@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight"/>
+    
     <style name="UnderlinedDenseTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="boxBackgroundColor">@android:color/transparent</item>
         <item name="boxStrokeColor">@color/text_primary_on_surface</item>
@@ -14,4 +16,8 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
     
+    <style name="TimePreferenceDialogContent" parent="AppTheme">
+        <item name="colorAccent">@color/accent_time_date_dialog</item>
+    </style>
+
 </resources>

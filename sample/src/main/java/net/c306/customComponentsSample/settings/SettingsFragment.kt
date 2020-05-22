@@ -7,8 +7,10 @@ import androidx.preference.PreferenceFragmentCompat
 import net.c306.customComponentsSample.R
 import net.c306.customcomponents.listPreference.UpgradedListPreference
 import net.c306.customcomponents.listPreference.UpgradedListPreferenceDialogFragment
-import net.c306.customcomponents.searchablemultiselectpreference.SearchableMultiSelectListPreference
-import net.c306.customcomponents.searchablemultiselectpreference.SearchableMultiSelectListPreferenceDialogFragment
+import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
+import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreferenceDialogFragment
+import net.c306.customcomponents.timePreference.TimePreference
+import net.c306.customcomponents.timePreference.TimePreferenceDialogFragment
 
 /**
  * Test settings fragment
@@ -39,18 +41,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onDisplayPreferenceDialog(preference: Preference?) {
         val fm = parentFragment?.childFragmentManager
         
+        /**
+         * If this is our custom preference, inflate and show relevant dialog
+         */
         when (preference) {
-            /**
-             * If this is our custom Time Preference, inflate and show Time picker dialog
-             */
-//            is TimePreference                      -> {
-//                TimePreferenceDialogFragmentCompat.newInstance(preference.key).run {
-//                    fm?.let {
-//                        setTargetFragment(this@SettingsFragment, 0)
-//                        show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
-//                    }
-//                }
-//            }
+            is TimePreference                      -> {
+                TimePreferenceDialogFragment.newInstance(preference.key).run {
+                    fm?.let {
+                        setTargetFragment(this@SettingsFragment, 0)
+                        show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
+                    }
+                }
+            }
             
             is UpgradedListPreference              -> {
                 UpgradedListPreferenceDialogFragment.newInstance(preference.key).run {

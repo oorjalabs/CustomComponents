@@ -1,8 +1,6 @@
 
 
-v. 0.1.7
-
-    --TBD-- Add time picker preference
+v. 0.1.8
 
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
@@ -13,6 +11,17 @@ v. 0.1.7
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.7
+
+    [DONE] Add time picker preference
+        [X] Add preference
+        [X] Add dialog
+        [X] Add resources
+        [X] Add to sample app
 
 
 ---------

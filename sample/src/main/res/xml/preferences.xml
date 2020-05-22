@@ -2,19 +2,24 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <PreferenceCategory app:title="Test preferences">
-    
-    <!--   Default value is from SortOrder.DEFAULT_SORT_ORDER_ID   -->
-    <net.c306.customcomponents.listPreference.UpgradedListPreference
-        app:defaultValue="sort_order_default_129310716349370374"
-        app:key="test_list_preference"
-        app:summary="%s"
-        app:title="Test list preference" />
-    
-    <net.c306.customcomponents.searchablemultiselectpreference.SearchableMultiSelectListPreference
-        app:key="test_searchable_list_preference"
-        app:summary="%s"
-        app:title="Test searchable multi select list preference"/>
-
+        
+        <net.c306.customcomponents.listPreference.UpgradedListPreference
+            app:defaultValue="sort_order_default_129310716349370374"
+            app:key="test_list_preference"
+            app:summary="%s"
+            app:title="Test list preference" />
+        
+        <net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
+            app:key="test_searchable_list_preference"
+            app:summary="%s"
+            app:title="Test searchable multi select list preference" />
+        
+        <net.c306.customcomponents.timePreference.TimePreference
+            app:defaultValue="510"
+            app:key="test_time_picker"
+            app:title="Test time picker preference" />
+        
+        
     </PreferenceCategory>
-    
+
 </PreferenceScreen>

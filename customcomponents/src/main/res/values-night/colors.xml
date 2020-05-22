@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <!-- Common for components -->
     <color name="text_primary_on_surface">@color/grey_50</color>
     
+    <!-- Used by UpgradedListPreferenceDialog to highlight selected item -->
     <color name="bg_list_item_activated">@color/grey_700</color>
     
+    <!-- Used by UpgradedListPreferenceDialog for optional list divider -->
+    <color name="divider">#1EFFFFFF</color>
+    
+    <!-- Used by SearchableMultiSelectPreferenceDialog for list item background states -->
     <color name="bg_searchable_list_item_focused">@color/grey_800</color>
     <color name="bg_searchable_list_item_disabled">@color/grey_900</color>
-
-    <color name="divider">#1EFFFFFF</color>
+    
+    <!-- Used by TimePreference for header and dial/hand colour -->
+    <color name="accent_time_date_dialog">@color/grey_400</color>
 
 </resources>
