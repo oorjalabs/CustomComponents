@@ -19,6 +19,10 @@
             app:key="test_time_picker"
             app:title="Test time picker preference" />
         
+        <EditTextPreference
+            app:title="Sample edit text preference"
+            app:key="test_edit_text"
+            />
         
     </PreferenceCategory>
 

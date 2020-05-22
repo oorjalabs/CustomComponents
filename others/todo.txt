@@ -15,6 +15,15 @@ v. 0.1.8
 
 ---------
 
+v. 0.1.8
+
+    [DONE] Handle opening dialog for custom preferences in library
+        [X] Utility method for apps to handle opening
+        [X] CustomPreferenceFragment class which automatically handles if extended from
+
+
+---------
+
 v. 0.1.7
 
     [DONE] Add time picker preference

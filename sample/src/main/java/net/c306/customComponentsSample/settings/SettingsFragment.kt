@@ -2,20 +2,15 @@ package net.c306.customComponentsSample.settings
 
 import android.os.Bundle
 import android.view.View
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import net.c306.customComponentsSample.R
+import net.c306.customcomponents.CustomPreferenceFragment
 import net.c306.customcomponents.listPreference.UpgradedListPreference
-import net.c306.customcomponents.listPreference.UpgradedListPreferenceDialogFragment
 import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreference
-import net.c306.customcomponents.searchableMultiSelectPreference.SearchableMultiSelectListPreferenceDialogFragment
-import net.c306.customcomponents.timePreference.TimePreference
-import net.c306.customcomponents.timePreference.TimePreferenceDialogFragment
 
 /**
  * Test settings fragment
  */
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : CustomPreferenceFragment() {
     
     private val dummyList by lazy {
         listOf(
@@ -36,47 +31,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Inflate preferences from resource file
         setPreferencesFromResource(R.xml.preferences, rootKey)
-    }
-    
-    override fun onDisplayPreferenceDialog(preference: Preference?) {
-        val fm = parentFragment?.childFragmentManager
-        
-        /**
-         * If this is our custom preference, inflate and show relevant dialog
-         */
-        when (preference) {
-            is TimePreference                      -> {
-                TimePreferenceDialogFragment.newInstance(preference.key).run {
-                    fm?.let {
-                        setTargetFragment(this@SettingsFragment, 0)
-                        show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
-                    }
-                }
-            }
-            
-            is UpgradedListPreference              -> {
-                UpgradedListPreferenceDialogFragment.newInstance(preference.key).run {
-                    fm?.let {
-                        setTargetFragment(this@SettingsFragment, 0)
-                        show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
-                    }
-                }
-            }
-            
-            is SearchableMultiSelectListPreference -> {
-                SearchableMultiSelectListPreferenceDialogFragment.newInstance(preference.key).run {
-                    fm?.let {
-                        setTargetFragment(this@SettingsFragment, 0)
-                        show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
-                    }
-                }
-            }
-            
-            else                                   -> {
-                super.onDisplayPreferenceDialog(preference)
-            }
-            
-        }
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
