@@ -40,3 +40,5 @@ Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the
         super.onDisplayPreferenceDialog(preference)
     }
 ```
+
+[Customisable resource values](/customcomponents/src/main/java/net/c306/customcomponents/preference)
