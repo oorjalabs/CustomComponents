@@ -5,4 +5,4 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/alert_def_padding"
     android:paddingBottom="@dimen/alert_def_padding"
-    android:theme="@style/TimePreferenceDialogContent" />
+    android:theme="@style/CustomComponents.TimePreferenceDialogContent" />

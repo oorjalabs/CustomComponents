@@ -1,8 +1,6 @@
 
 
-v. 0.1.9
-
-    --TBD-- Make preference dialogs internal
+v. 0.1.9.0
 
     --TBD-- Add common utils
         [ ] Read log for app (useful for debugging)
@@ -10,9 +8,22 @@ v. 0.1.9
         [ ] Write to clipboard
         [ ] Create intent for url
 
+    --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
+
+    --TBD-- Move common styles (text input, button) to repository, add Base or Common prefix. Apps can use them or extend from them
+
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.8.3
+
+    [DONE] Rename colour resources to avoid common, unidentifiable names
+
+    [DONE] Add repository prefix to styles. Apps can use them or extend from them.
 
 
 ---------

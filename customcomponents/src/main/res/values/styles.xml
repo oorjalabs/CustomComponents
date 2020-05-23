@@ -3,20 +3,22 @@
     
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight"/>
     
-    <style name="UnderlinedDenseTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+    <style name="CustomComponents" />
+    
+    <style name="CustomComponents.UnderlinedDenseTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="boxBackgroundColor">@android:color/transparent</item>
-        <item name="boxStrokeColor">@color/text_primary_on_surface</item>
-        <item name="hintTextColor">@color/text_primary_on_surface</item>
+        <item name="boxStrokeColor">@color/text_color_hint_search_box</item>
+        <item name="hintTextColor">@color/stroke_color_search_box</item>
         <item name="hintEnabled">false</item>
     </style>
     
-    <style name="UnderlinedDenseTextInput" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
+    <style name="CustomComponentsUnderlinedDenseTextInput" parent="@style/Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
         <item name="android:lineSpacingMultiplier">1.12</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
     
-    <style name="TimePreferenceDialogContent" parent="AppTheme">
+    <style name="CustomComponents.TimePreferenceDialogContent" parent="AppTheme">
         <item name="colorAccent">@color/accent_time_date_dialog</item>
     </style>
 

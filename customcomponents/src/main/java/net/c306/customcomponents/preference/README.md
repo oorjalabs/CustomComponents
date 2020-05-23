@@ -2,7 +2,8 @@
 
 ### SearchableMultiSelectPreference
 
-Colour of hint text in search field in dialog: `@color/text_primary_on_surface`
+Colour of hint text in search field: `@color/text_color_hint_search_box`
+Colour of search field underline on focus: `@color/stroke_color_search_box`
 
 List item background states:  
 `@color/bg_searchable_list_item_activated`  
@@ -15,7 +16,7 @@ List item background states:
 
 Background of selected list item: `@color/bg_list_item_activated`
 
-Colour of optional divider after list item: `@color/divider`
+Colour of optional divider after list item: `@color/upgraded_list_divider`
     
     
 ### TimePreference

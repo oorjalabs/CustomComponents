@@ -19,6 +19,6 @@
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        tools:background="@color/divider"
+        tools:background="@color/upgraded_list_divider"
         android:layout_height="1dp" />
 </LinearLayout>

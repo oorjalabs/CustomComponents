@@ -169,7 +169,7 @@ internal class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCo
                 }
                 
                 // Set divider colour if `dividerBelow` is true, and not last item
-                divider.setBackgroundColor(if (item.dividerBelow && position < count - 1) context.getColor(R.color.divider) else context.getColor(android.R.color.transparent))
+                divider.setBackgroundColor(if (item.dividerBelow && position < count - 1) context.getColor(R.color.upgraded_list_divider) else context.getColor(android.R.color.transparent))
                 
             }
         }
