@@ -1,12 +1,6 @@
 
 
-v. 0.1.9.0
-
-    --TBD-- Add common utils
-        [ ] Read log for app (useful for debugging)
-        [ ] Read from clipboard
-        [ ] Write to clipboard
-        [ ] Create intent for url
+v. 0.1.10
 
     --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
 
@@ -15,6 +9,19 @@ v. 0.1.9.0
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.9
+
+    [DONE] Add common utils
+        [X] Read log for app (useful for debugging)
+        [X] Read from clipboard
+        [X] Write to clipboard
+        [X] Create intent for url
+        [X] Generate random string
+        [X] Get device name
 
 
 ---------
