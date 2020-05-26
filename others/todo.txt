@@ -13,6 +13,13 @@ v. 0.1.10
 
 ---------
 
+v. 0.1.9.1
+
+    [DONE] Merge CustomPreferenceUtils into CustomPreferenceFragment's companion object
+
+
+---------
+
 v. 0.1.9
 
     [DONE] Add common utils
