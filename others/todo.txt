@@ -1,6 +1,6 @@
 
 
-v. 0.1.10
+v. 0.1.11
 
     --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
 
@@ -9,6 +9,15 @@ v. 0.1.10
     --TBD-- Add improved DatePicker
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.10
+
+    [DONE] CommonUtils
+        [X] Write log to file
+        [X] Create email intent, with an optional file to attach
 
 
 ---------

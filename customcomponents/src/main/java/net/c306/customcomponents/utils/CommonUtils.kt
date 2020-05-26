@@ -8,12 +8,12 @@ import android.content.Intent.ACTION_VIEW
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import android.os.Build
+import android.text.Html
+import androidx.core.content.FileProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
+import java.io.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
 
@@ -28,6 +28,7 @@ object CommonUtils {
         val process = Runtime.getRuntime().exec("logcat -d -v long printable UTC")
         return@withContext process.inputStream
     }
+    
     
     /**
      * Reads and returns logcat for application as a string.
@@ -52,6 +53,83 @@ object CommonUtils {
         }
         
         return@withContext log
+    }
+    
+    
+    /**
+     * Reads logcat and writes it to file in app's no_backup folder
+     * @return [File] object with logcat written to it, or null if error occurred
+     */
+    suspend fun getLogCatFile(context: Context): File? = withContext(Dispatchers.IO) {
+        
+        var errors: String? = null
+        var bufferedReader: BufferedReader? = null
+        var file: File? = null
+        
+        try {
+            
+            val dateString = SimpleDateFormat("yyyy-MM-dd", Locale.UK).format(Date())
+            file = File(context.filesDir, "logcat_${dateString}.txt")
+            if (!file.exists()) file.createNewFile()
+            
+            val process = Runtime.getRuntime().exec("logcat -d -v long printable UTC -f ${file.absoluteFile}")
+            
+            // Need to read buffered stream to ensure the method waits till the process exits. Else it exits immediately and returns still empty file
+            bufferedReader = BufferedReader(InputStreamReader(process.errorStream))
+            var line: String?
+            while (bufferedReader.readLine().also { line = it } != null) {
+                errors += "\n" + line
+            }
+        } catch (e: Exception) {
+            errors = null
+            e.printStackTrace()
+        } finally {
+            bufferedReader?.close()
+        }
+        
+        return@withContext file
+    }
+    
+    
+    data class EmailDetails(
+        val to: String,
+        val subject: String,
+        val body: String,
+        val attachment: File?
+    )
+    
+    
+    /**
+     * Creates an email intent with given email details. Returns a chooser intent for the email intent.
+     */
+    fun createEmailIntent(context: Context, emailDetails: EmailDetails): Intent {
+        
+        val emailIntent = Intent(Intent.ACTION_SEND)
+        
+        // set the type to 'email'
+        emailIntent.type = "message/rfc822"
+        
+        // to address
+        val to = arrayOf(emailDetails.to)
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, to)
+        
+        // title and body
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, emailDetails.subject)
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(emailDetails.body, Html.FROM_HTML_MODE_LEGACY))
+        
+        // attachment
+        emailDetails.attachment?.let {
+            val attachmentUri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.email_file_provider",
+                emailDetails.attachment
+            )
+            context.grantUriPermission(context.packageName, attachmentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            emailIntent.putExtra(Intent.EXTRA_STREAM, attachmentUri)
+            emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        
+        return Intent.createChooser(emailIntent, "Email logs")
     }
     
     

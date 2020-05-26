@@ -20,6 +20,7 @@ class SettingsFragment : CustomPreferenceFragment() {
             "Granny",
             "Professor McGonagall",
             "Severus Snape",
+            "Jacinda Ardern",
             "Ove",
             "Luna Lovegood",
             "Neville Longbottom",

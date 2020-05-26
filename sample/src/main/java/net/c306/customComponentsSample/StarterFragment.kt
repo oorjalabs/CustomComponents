@@ -29,8 +29,8 @@ class StarterFragment : Fragment() {
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    
-        Log.d("SAMPLE_APP", "print this to logcat to read later")
+        
+        Log.d(LOG_TAG, "print this to log to read later with logcat")
         
         open_settings.setOnClickListener {
             findNavController().navigate(R.id.action_openSettings)
@@ -38,11 +38,7 @@ class StarterFragment : Fragment() {
         
         print_logcat.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-                // Ironic. Reading log and testing it by printing it back to logcat!
-                val log = CommonUtils.getLogCat()
-    
-                tv_log.text = log ?: "No log received :("
-                
+                tv_log.text = CommonUtils.getLogCat() ?: "No log received :("
             }
         }
         
@@ -60,5 +56,31 @@ class StarterFragment : Fragment() {
             val clipboardText = CommonUtils.readFromClipboard(it.context)
             Toast.makeText(it.context, clipboardText, Toast.LENGTH_SHORT).show()
         }
+        
+        logcat_as_file.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                Log.d(LOG_TAG, "print some more stuff to log tag")
+                
+                val file = CommonUtils.getLogCatFile(it.context)
+                
+                Log.d(LOG_TAG, "file size: '${file?.length() ?: "0 :("}'")
+                
+                val emailIntent = CommonUtils.createEmailIntent(
+                    it.context,
+                    CommonUtils.EmailDetails(
+                        to = "ab.something@gmail.com",
+                        subject = "Testing email from wherever",
+                        body = "Sample body",
+                        attachment = file
+                    )
+                )
+                
+                startActivity(emailIntent)
+            }
+        }
+    }
+    
+    companion object {
+        private const val LOG_TAG = "SAMPLE_APP"
     }
 }
