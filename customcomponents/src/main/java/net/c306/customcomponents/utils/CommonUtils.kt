@@ -121,7 +121,7 @@ object CommonUtils {
         emailDetails.attachment?.let {
             val attachmentUri = FileProvider.getUriForFile(
                 context,
-                "${context.packageName}.email_file_provider",
+                "${context.packageName}.custom_components.email_file_provider",
                 emailDetails.attachment
             )
             context.grantUriPermission(context.packageName, attachmentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION)

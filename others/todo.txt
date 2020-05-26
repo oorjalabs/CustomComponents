@@ -13,6 +13,14 @@ v. 0.1.11
 
 ---------
 
+v. 0.1.10.1
+
+    [DONE] CommonUtils
+        [X] Create custom file provider for email so it doesn't conflict with default provider that the app may be using
+
+
+---------
+
 v. 0.1.10
 
     [DONE] CommonUtils
