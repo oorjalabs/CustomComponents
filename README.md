@@ -42,3 +42,10 @@ Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the
 ```
 
 [Customisable resource values](/customcomponents/src/main/java/net/c306/customcomponents/preference)
+
+## Apps using this library
+
+- [Todo.txt for Android](https://play.google.com/store/apps/details?id=net.c306.ttsuper)
+- [Autoconvert](https://play.google.com/store/apps/details?id=net.c306.autoconvert)
+- [Accelereader for Instapaper](https://play.google.com/store/apps/details?id=net.c306.ari)
+- [PhotoPress](https://play.google.com/store/apps/details?id=net.c306.photopress)
