@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="primaryColor">#03a9f4</color>
+    <color name="primaryLightColor">#67daff</color>
+    <color name="primaryDarkColor">#007ac1</color>
+    <color name="secondaryColor">#ff6e40</color>
+    <color name="secondaryLightColor">#ffa06d</color>
+    <color name="secondaryDarkColor">#c53d13</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
+    
+    
+    <color name="text_secondary_on_surface">@color/secondaryDarkColor</color>
+    
+    
+    <!-- Used by UpgradedListPreferenceDialog -->
+    <color name="bg_list_item_activated">@color/primaryLightColor</color>
+    
+    <!-- Used by SearchableMultiSelectPreferenceDialog -->
+    
+    <color name="text_color_hint_search_box">@color/primaryDarkColor</color>
+    <color name="cursor_color_search_box">@color/primaryColor</color>
+    <color name="stroke_color_search_box">@color/primaryDarkColor</color>
+    
+    <color name="bg_searchable_list_item_activated">@color/primaryLightColor</color>
+    
+    <!-- Used by TimePreference for header and dial/hand colour -->
+    <color name="accent_time_date_dialog">@color/primaryColor</color>
+    
+    <!-- Used by Update notes fragment -->
+    <color name="update_notes_link_colour">@color/text_secondary_on_surface</color>
+    <color name="update_notes_background">@android:color/white</color>
+    
 </resources>

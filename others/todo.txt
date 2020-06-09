@@ -1,6 +1,6 @@
 
 
-v. 0.1.12
+v. 0.1.X
 
     --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
 
@@ -13,11 +13,16 @@ v. 0.1.12
 
 ---------
 
-v. 0.1.12
+v. 0.1.13
 
     --TBD-- Add ConfirmationDialog and view model, etc
 
-    --TBD-- Add cursor color for search box in searchable list preference
+
+---------
+
+v. 0.1.12
+
+    [DONE] Add cursor color for search box in searchable list preference
 
 
 ---------
