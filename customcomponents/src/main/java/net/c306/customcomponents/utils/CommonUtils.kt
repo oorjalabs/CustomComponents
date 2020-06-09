@@ -81,7 +81,6 @@ object CommonUtils {
                 errors += "\n" + line
             }
         } catch (e: Exception) {
-            errors = null
             e.printStackTrace()
         } finally {
             bufferedReader?.close()
@@ -198,4 +197,5 @@ object CommonUtils {
         else "$manufacturer $model"
     }
     
+    internal const val LOG_TAG = "CUSTOM_COMPONENTS"
 }

@@ -16,5 +16,9 @@
     
     <!-- Used by TimePreference for header and dial/hand colour -->
     <color name="accent_time_date_dialog">@color/grey_400</color>
-
+    
+    <!-- Used by Update notes fragment -->
+    <color name="update_notes_link_colour">@color/grey_400</color>
+    <color name="update_notes_background">#121212</color>
+    
 </resources>

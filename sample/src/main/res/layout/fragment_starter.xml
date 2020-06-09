@@ -12,14 +12,24 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open settings" />
+        android:text="Open settings"
+        tools:ignore="HardcodedText" />
+    
+    <Button
+        android:id="@+id/open_update_notes"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open update notes"
+        tools:ignore="HardcodedText" />
     
     <Button
         android:id="@+id/print_device_name"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Print &amp; copy device model name" />
+        android:text="Print &amp; copy device model name"
+        tools:ignore="HardcodedText" />
     
     <TextView
         android:id="@+id/tv_device_name"
@@ -31,7 +41,8 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Print random string" />
+        android:text="Print random string"
+        tools:ignore="HardcodedText" />
     
     <TextView
         android:id="@+id/tv_random_string"
@@ -43,14 +54,24 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toast clipboard text" />
+        android:text="Toast clipboard text"
+        tools:ignore="HardcodedText" />
     
     <Button
         android:id="@+id/print_logcat"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Print logcat" />
+        android:text="Print logcat"
+        tools:ignore="HardcodedText" />
+    
+    <Button
+        android:id="@+id/logcat_as_file"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email logcat file"
+        tools:ignore="HardcodedText" />
     
     <ScrollView
         android:layout_width="match_parent"
@@ -63,11 +84,4 @@
             android:layout_height="wrap_content" />
     </ScrollView>
     
-    <Button
-        android:id="@+id/logcat_as_file"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email logcat file" />
-
 </LinearLayout>

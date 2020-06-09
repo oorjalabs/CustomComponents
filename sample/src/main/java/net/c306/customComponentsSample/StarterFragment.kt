@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_starter.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import net.c306.customcomponents.updatenotes.UpdateNotesViewModel
 import net.c306.customcomponents.utils.CommonUtils
 
 /**
@@ -34,6 +36,14 @@ class StarterFragment : Fragment() {
         
         open_settings.setOnClickListener {
             findNavController().navigate(R.id.action_openSettings)
+        }
+        
+        open_update_notes.setOnClickListener {
+            val updateNotesViewModel = ViewModelProvider(requireActivity()).get(UpdateNotesViewModel::class.java)
+            updateNotesViewModel.setTitle("What's new!")
+            updateNotesViewModel.setShowOwnToolbar(false)
+            // updateNotesViewModel.setContentResourceId(R.raw.…)
+            findNavController().navigate(R.id.action_open_updateNotes)
         }
         
         print_logcat.setOnClickListener {

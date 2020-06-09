@@ -103,7 +103,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                             @DrawableRes val backgroundDrawable: Int
                             
                             if (isInSelected) {
-                                drawableEnd = R.drawable.ic_checked
+                                drawableEnd = R.drawable.ic_list_preference_item_checked
                                 backgroundDrawable = R.color.bg_searchable_list_item_activated
                                 mSelectedEntries.add(selectedEntry.saveString)
                             } else {
@@ -196,7 +196,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                     
                     val isInSelected = item.saveString in mSelectedEntries
                     
-                    val drawableEnd = if (isInSelected) R.drawable.ic_checked else 0
+                    val drawableEnd = if (isInSelected) R.drawable.ic_list_preference_item_checked else 0
                     it.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
                     
                     it.background = it.context.getDrawable(

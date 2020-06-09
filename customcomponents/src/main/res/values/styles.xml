@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="CustomComponentsTheme" parent="Theme.MaterialComponents.DayNight"/>
     
     <style name="CustomComponents" />
     
@@ -18,8 +18,14 @@
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
     </style>
     
-    <style name="CustomComponents.TimePreferenceDialogContent" parent="AppTheme">
+    <style name="CustomComponents.TimePreferenceDialogContent" parent="CustomComponentsTheme">
         <item name="colorAccent">@color/accent_time_date_dialog</item>
     </style>
-
+    
+    <style name="CustomComponentsTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:backgroundTint">?colorSurface</item>
+    </style>
+    
+    <style name="CustomComponentsTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+    
 </resources>

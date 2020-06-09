@@ -10,5 +10,5 @@
     android:paddingStart="?attr/listPreferredItemPaddingStart"
     android:paddingEnd="?attr/listPreferredItemPaddingEnd"
     android:textAppearance="?attr/textAppearanceListItemSmall"
-    tools:drawableEnd="@drawable/ic_checked"
+    tools:drawableEnd="@drawable/ic_list_preference_item_checked"
     tools:text="Selectable item text " />

@@ -1,14 +1,30 @@
 
 
-v. 0.1.11
+v. 0.1.12
 
     --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
 
     --TBD-- Move common styles (text input, button) to repository, add Base or Common prefix. Apps can use them or extend from them
 
-    --TBD-- Add improved DatePicker
+    --TBD-- Add ConfirmationDialog and view model, etc
 
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.12
+
+    --TBD-- Add ConfirmationDialog and view model, etc
+
+    --TBD-- Add cursor color for search box in searchable list preference
+
+
+---------
+
+v. 0.1.11
+
+    [DONE] Add update notes dialog and view model
 
 
 ---------

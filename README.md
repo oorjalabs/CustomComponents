@@ -25,6 +25,9 @@ dependencies {
 
 ## Other usage notes
 
+
+### Custom Preferences
+
 If using custom preferences, ideally extend settings fragment from `CustomSettingsFragment`. The custom fragment handles `onDisplayPreferenceDialog` to show the custom preference dialogs.
 
 Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the library handle displaying dialogs. Sample usage:
@@ -42,6 +45,10 @@ Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the
 ```
 
 [Customisable resource values](/customcomponents/src/main/java/net/c306/customcomponents/preference)
+
+### Update notes fragment
+
+Details on how to use [are here](/customcomponents/src/main/java/net/c306/customcomponents/updatenotes/README.md).
 
 ## Apps using this library
 
