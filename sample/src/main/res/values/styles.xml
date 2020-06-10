@@ -9,6 +9,10 @@
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+        
+        <!--  This will change button colours for all dialogs  -->
+        <item name="alertDialogTheme">@style/CustomComponents.AlertDialogTheme</item>
     </style>
-
+    
+    
 </resources>

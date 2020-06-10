@@ -8,6 +8,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="confirmationDialog">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-159" />
+                            <option name="y" value="-148" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="settingsFragment">
                     <value>
                       <LayoutPositions>
@@ -36,7 +48,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_starterFragment_to_updateNotesFragment">
+                            <entry key="action_open_updateNotes">
                               <value>
                                 <LayoutPositions />
                               </value>

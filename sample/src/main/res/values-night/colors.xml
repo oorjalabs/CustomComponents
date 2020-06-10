@@ -30,4 +30,8 @@
     <!-- Used by Update notes fragment -->
     <color name="update_notes_background">@color/grey_950</color>
     
+    <!-- Used by confirmation dialog -->
+    <color name="text_color_confirmation_dialog_button">@color/secondaryColor</color>
+
+
 </resources>

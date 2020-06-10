@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_starter.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import net.c306.customcomponents.confirmation.ConfirmationDialog
 import net.c306.customcomponents.updatenotes.UpdateNotesViewModel
 import net.c306.customcomponents.utils.CommonUtils
 
@@ -20,6 +24,10 @@ import net.c306.customcomponents.utils.CommonUtils
  * A simple [Fragment] subclass.
  */
 class StarterFragment : Fragment() {
+    
+    private val myTag = this.javaClass.name
+    
+    private val confirmationViewModel by activityViewModels<ConfirmationDialog.ConfirmationViewModel>()
     
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +52,19 @@ class StarterFragment : Fragment() {
             updateNotesViewModel.setShowOwnToolbar(false)
             // updateNotesViewModel.setContentResourceId(R.raw.…)
             findNavController().navigate(R.id.action_open_updateNotes)
+        }
+        
+        confirm_something.setOnClickListener {
+            val confirmationDetails = ConfirmationDialog.Details(
+                callerTag = myTag,
+                dialogTitle = "Confirm your being",
+                dialogMessage = "To be, or not to be, that is the question",
+                iconResourceId = R.drawable.ic_help,
+                requestCode = 1098,
+                positiveButtonTitle = "Be",
+                negativeButtonTitle = "Not to be"
+            )
+            findNavController().navigate(R.id.action_global_confirmationDialog, bundleOf(ConfirmationDialog.KEY_CONFIRMATION_DETAILS to confirmationDetails))
         }
         
         print_logcat.setOnClickListener {
@@ -88,6 +109,20 @@ class StarterFragment : Fragment() {
                 startActivity(emailIntent)
             }
         }
+        
+        confirmationViewModel.result.observe(viewLifecycleOwner, Observer {
+            // Only act on results for confirmation requests made by us
+            if (it == null || it.callerTag != myTag) return@Observer
+            
+            if (it.requestCode == 1098) {
+                // Filter our own requests with request codes
+                val choice = "You chose ${if (it.result) "to be" else "not to be"}"
+                Toast.makeText(requireContext(), choice, Toast.LENGTH_SHORT).show()
+            }
+            
+            // Reset the view model once done
+            confirmationViewModel.reset()
+        })
     }
     
     companion object {

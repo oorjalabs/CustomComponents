@@ -16,6 +16,7 @@
     <!-- Used by UpgradedListPreferenceDialog -->
     <color name="bg_list_item_activated">@color/primaryLightColor</color>
     
+    
     <!-- Used by SearchableMultiSelectPreferenceDialog -->
     
     <color name="text_color_hint_search_box">@color/primaryDarkColor</color>
@@ -24,11 +25,17 @@
     
     <color name="bg_searchable_list_item_activated">@color/primaryLightColor</color>
     
+    
     <!-- Used by TimePreference for header and dial/hand colour -->
     <color name="accent_time_date_dialog">@color/primaryColor</color>
+    
     
     <!-- Used by Update notes fragment -->
     <color name="update_notes_link_colour">@color/text_secondary_on_surface</color>
     <color name="update_notes_background">@android:color/white</color>
     
+    <!-- Used by confirmation dialog -->
+    <color name="text_color_confirmation_dialog_button">@color/secondaryColor</color>
+
+
 </resources>

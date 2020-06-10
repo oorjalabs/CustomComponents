@@ -15,7 +15,7 @@ v. 0.1.X
 
 v. 0.1.13
 
-    --TBD-- Add ConfirmationDialog and view model, etc
+    [DONE] Add ConfirmationDialog and view model, etc
 
 
 ---------

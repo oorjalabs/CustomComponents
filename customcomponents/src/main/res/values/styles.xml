@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <style name="CustomComponentsTheme" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="CustomComponentsTheme" parent="Theme.MaterialComponents.DayNight" />
     
     <style name="CustomComponents" />
     
@@ -29,4 +29,13 @@
     
     <style name="CustomComponentsTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
     
+    <style name="CustomComponents.AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarButtonStyle">@style/CustomComponents.DialogButtonStyle</item>
+    </style>
+    
+    <style name="CustomComponents.DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/sl_text_color_confirmation_dialog_button</item>
+        <item name="rippleColor">@color/sl_ripple_color_confirmation_dialog_button</item>
+    </style>
+
 </resources>

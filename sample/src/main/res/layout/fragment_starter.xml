@@ -24,6 +24,14 @@
         tools:ignore="HardcodedText" />
     
     <Button
+        android:id="@+id/confirm_something"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm this!"
+        tools:ignore="HardcodedText" />
+    
+    <Button
         android:id="@+id/print_device_name"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"

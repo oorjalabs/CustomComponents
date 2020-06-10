@@ -1,32 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Create resources with these names in app to override these default values -->
+    <!--
+        Placeholder style colours.
+        No need to override these, just over ride component specific colours below.
+    -->
+    <color name="primaryColor">#c5e1a5</color>
+    <color name="primaryLightColor">#f8ffd7</color>
+    <color name="primaryDarkColor">#94af76</color>
+    <color name="secondaryColor">#b388ff</color>
+    <color name="secondaryLightColor">#e7b9ff</color>
+    <color name="secondaryDarkColor">#805acb</color>
+    
+    <color name="background">@color/grey_0</color>
+    
     
     <!-- Used by UpgradedListPreferenceDialog -->
     <color name="upgraded_list_divider">#1E000000</color>
     
-    <color name="bg_list_item_activated">@color/grey_300</color>
+    <color name="bg_list_item_activated">@color/primaryLightColor</color>
+    
     
     <!-- Used by SearchableMultiSelectPreferenceDialog -->
     
-    <color name="text_color_hint_search_box">@color/grey_950</color>
-    <color name="cursor_color_search_box">@color/text_color_hint_search_box</color>
-    <color name="stroke_color_search_box">@color/text_color_hint_search_box</color>
+    <color name="text_color_hint_search_box">@color/primaryDarkColor</color>
+    <color name="cursor_color_search_box">@color/primaryColor</color>
+    <color name="stroke_color_search_box">@color/primaryDarkColor</color>
     
-    <color name="bg_searchable_list_item_activated">@color/bg_list_item_activated</color>
+    <color name="bg_searchable_list_item_activated">@color/primaryLightColor</color>
     <color name="bg_searchable_list_item_focused">@color/grey_100</color>
     <color name="bg_searchable_list_item_normal">@android:color/transparent</color>
     <color name="bg_searchable_list_item_disabled">@color/grey_300</color>
     
+    
     <!-- Used by TimePreference for header and dial/hand colour -->
-    <color name="accent_time_date_dialog">@color/grey_600</color>
+    <color name="accent_time_date_dialog">@color/primaryColor</color>
+    
     
     <!-- Used by Update notes fragment -->
-    <color name="update_notes_link_colour">@color/grey_600</color>
-    <color name="update_notes_background">#ffffff</color>
+    <color name="update_notes_link_colour">@color/secondaryColor</color>
+    <color name="update_notes_background">@color/background</color>
+    
+    
+    <!--
+        Used by confirmation dialog
+        
+        To use or modify these colours, also add
+        `<item name="alertDialogTheme">@style/CustomComponents.AlertDialogTheme</item>` to your
+        app theme.
+        Adding to theme will change button colours of ALL dialogs.
+    -->
+    <color name="text_color_confirmation_dialog_button">@color/secondaryColor</color>
+    <color name="text_color_confirmation_dialog_button_disabled">@color/grey_500</color>
     
     
     <!-- Greys  -->
+    <color name="grey_0">#FFFFFF</color>
     <color name="grey_50">#FAFAFA</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_200">#EEEEEE</color>
