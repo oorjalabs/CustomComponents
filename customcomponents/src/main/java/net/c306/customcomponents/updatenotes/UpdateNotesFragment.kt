@@ -47,6 +47,9 @@ class UpdateNotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        // Mark notes as seen. Apps can observe this variable to take action when notes are seen
+        viewModel.setSeen(true)
+        
         toolbar.setNavigationOnClickListener {
             dismiss()
         }

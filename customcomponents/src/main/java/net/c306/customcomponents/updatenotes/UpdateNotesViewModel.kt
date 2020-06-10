@@ -9,6 +9,13 @@ import net.c306.customcomponents.R
 class UpdateNotesViewModel : ViewModel() {
     
     
+    private val _seen = MutableLiveData<Boolean>()
+    val seen: LiveData<Boolean> = _seen
+    
+    fun setSeen(value: Boolean) {
+        _seen.value = value
+    }
+    
     private val _showOwnToolbar = MutableLiveData<Boolean>()
     val showOwnToolbar: LiveData<Boolean> = _showOwnToolbar
     
@@ -33,6 +40,7 @@ class UpdateNotesViewModel : ViewModel() {
         _contentResourceId.value = resId
     }
     
+    
     init {
         // Default behaviour
         
@@ -42,5 +50,7 @@ class UpdateNotesViewModel : ViewModel() {
         setTitle("Update notes")
         // Show demo update notes
         setContentResourceId(R.raw.updatenotes)
+        // Set not seen
+        setSeen(false)
     }
 }

@@ -50,6 +50,10 @@ Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the
 
 Details on how to use [are here](/customcomponents/src/main/java/net/c306/customcomponents/updatenotes/README.md).
 
+### Confirmation dialog
+
+Details on how to use [are here](/customcomponents/src/main/java/net/c306/customcomponents/confirmation/README.md).
+
 ## Apps using this library
 
 - [Todo.txt for Android](https://play.google.com/store/apps/details?id=net.c306.ttsuper)

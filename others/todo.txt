@@ -13,6 +13,13 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.14
+
+    [DONE] Add `seen` to update notes view model so apps can mark notes seen when opened
+
+
+---------
+
 v. 0.1.13
 
     [DONE] Add ConfirmationDialog and view model, etc
