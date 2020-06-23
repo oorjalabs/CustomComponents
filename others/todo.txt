@@ -2,13 +2,20 @@
 
 v. 0.1.X
 
-    --TBD-- Cursor color in search box comes from app's primary color. Should be able to set it to custom colour
-
     --TBD-- Move common styles (text input, button) to repository, add Base or Common prefix. Apps can use them or extend from them
 
-    --TBD-- Add ConfirmationDialog and view model, etc
-
     --TBD-- Make resources explicitly public
+
+
+---------
+
+v. 0.1.15
+
+    [DONE] Add View extension methods
+
+    [DONE] Add Utility extension methods
+
+    [DONE] Add tests for UtilityExtensions
 
 
 ---------

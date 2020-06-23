@@ -52,6 +52,14 @@
         android:text="Print random string"
         tools:ignore="HardcodedText" />
     
+    <Button
+        android:id="@+id/share_model_and_random_string"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share model name and random string"
+        tools:ignore="HardcodedText" />
+    
     <TextView
         android:id="@+id/tv_random_string"
         android:layout_width="match_parent"

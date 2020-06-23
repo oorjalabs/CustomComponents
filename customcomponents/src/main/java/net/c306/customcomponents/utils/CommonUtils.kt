@@ -99,6 +99,37 @@ object CommonUtils {
     
     
     /**
+     * Create a text type sharing intent with given text and title
+     */
+    fun sendSharingIntent(
+        context: Context,
+        title: String,
+        text: String,
+        applyTitleFix: Boolean = false
+    ) {
+        /**
+         * Why? Why, to give you a taste of your future, a preview of things to come.
+         * Con permiso, Capitan. The hall is rented, the orchestra engaged.
+         * It's now time to see if you can dance.
+         */
+        val isQorLater = applyTitleFix && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+    
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            if (isQorLater) {
+                putExtra(Intent.EXTRA_TITLE, title)
+            }
+            type = MIME_TYPE_TEXT
+        }
+        
+        context.startActivity(
+            Intent.createChooser(sendIntent, if (isQorLater) "" else title)
+        )
+    }
+    
+    
+    /**
      * Creates an email intent with given email details. Returns a chooser intent for the email intent.
      */
     fun createEmailIntent(context: Context, emailDetails: EmailDetails): Intent {
@@ -197,5 +228,7 @@ object CommonUtils {
         else "$manufacturer $model"
     }
     
+    
     internal const val LOG_TAG = "CUSTOM_COMPONENTS"
+    private const val MIME_TYPE_TEXT = "text/plain"
 }

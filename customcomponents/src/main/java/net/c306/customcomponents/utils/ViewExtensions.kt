@@ -1,15 +1,24 @@
 package net.c306.customcomponents.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.util.TypedValue
+import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.core.view.marginTop
+import androidx.core.widget.TextViewCompat
+import com.google.android.material.button.MaterialButton
+import net.c306.customcomponents.R
 import kotlin.math.max
 
 /**
@@ -223,5 +232,89 @@ fun View.setPadding(newPadding: Int, direction: Direction) {
         Direction.LEFT   -> setPadding(newPadding, paddingTop, paddingRight, paddingBottom)
         Direction.RIGHT  -> setPadding(paddingLeft, paddingTop, newPadding, paddingBottom)
     }
+}
+
+fun View.getStatusBarHeight(): Int {
+    var result = 0
+    val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        result = resources.getDimensionPixelSize(resourceId)
+    }
+    return result
+}
+
+fun View.getNavigationBarHeight(): Int {
+    var result = 0
+    val resourceId: Int = resources.getIdentifier("navigation_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        result = resources.getDimensionPixelSize(resourceId)
+    }
+    return result
+}
+
+fun View.getActionBarHeight(): Int {
+    // Calculate ActionBar height
+    val tv = TypedValue()
+    return if (context.theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+        TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
+    } else {
+        var result = 0
+        val resourceId: Int =
+            resources.getIdentifier("action_bar_default_height_material", "dimen", "android")
+        if (resourceId > 0) {
+            result = resources.getDimensionPixelSize(resourceId)
+        }
+        result
+    }
+}
+
+fun MaterialButton.setRightIcon() {
+    TextViewCompat.setCompoundDrawablesRelative(this, null, null, this.icon, null)
+}
+
+object CenteredToast {
+    fun makeText(context: Context, string: CharSequence, duration: Int): Toast {
+        return Toast.makeText(context, string, duration).apply {
+            (view.findViewById<View>(android.R.id.message) as TextView).gravity =
+                Gravity.CENTER
+        }
+    }
+    
+    fun makeText(context: Context, @StringRes stringRes: Int, duration: Int): Toast {
+        return makeText(context, context.resources.getText(stringRes), duration)
+    }
+}
+
+/**
+ * Add a back button with click handler to text view.
+ * Used when a text view is used in place of toolbar in some modal fragments.
+ * @param onTouchCallback Callback for when back button is pressed
+ */
+@SuppressLint("ClickableViewAccessibility")
+fun TextView.addBackButton(onTouchCallback: () -> Unit) {
+    setPadding(resources.dpToFloat(16).toInt(), Direction.LEFT)
+    setCompoundDrawablesRelativeWithIntrinsicBounds(
+        R.drawable.ic_arrow_back,
+        0,
+        0,
+        0
+    )
+    compoundDrawablePadding = resources.dpToFloat(16).toInt()
+    
+    setOnTouchListener(View.OnTouchListener { _, event ->
+        if (event.action == MotionEvent.ACTION_UP) {
+            
+            val textLocation = IntArray(2)
+            getLocationOnScreen(textLocation)
+            
+            if (event.rawX <= textLocation[0] + totalPaddingLeft) {
+                // Left drawable was tapped
+                onTouchCallback()
+                return@OnTouchListener true
+            }
+        }
+        true
+    })
+    
 }
 

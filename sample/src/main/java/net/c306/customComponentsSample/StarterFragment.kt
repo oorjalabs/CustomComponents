@@ -82,6 +82,16 @@ class StarterFragment : Fragment() {
         print_random_string.setOnClickListener {
             tv_random_string.text = CommonUtils.generateRandomString()
         }
+    
+        share_model_and_random_string.setOnClickListener {
+            val modelName = CommonUtils.getDeviceName()
+            val randomString = CommonUtils.generateRandomString()
+            CommonUtils.sendSharingIntent(
+                it.context,
+                "Model name from Sample app",
+                "$modelName\n$randomString"
+            )
+        }
         
         toast_clipboard.setOnClickListener {
             val clipboardText = CommonUtils.readFromClipboard(it.context)
