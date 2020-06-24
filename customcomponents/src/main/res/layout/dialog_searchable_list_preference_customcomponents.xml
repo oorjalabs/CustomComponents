@@ -37,7 +37,7 @@
         android:choiceMode="multipleChoice"
         android:divider="@null"
         android:listSelector="@null"
-        tools:listitem="@layout/item_searchable_list_pref" />
+        tools:listitem="@layout/item_searchable_list_pref_customcomponents" />
 
     <TextView
         android:id="@+id/empty_view"

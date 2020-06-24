@@ -17,6 +17,8 @@ fun readFromClipboard(context: Context): String?
 
 fun getDeviceName(): String  
 
+fun getNamedVersion(versionName: String): BigDecimal
+
 fun generateRandomString(stringLength: Int = 20, useCharacters: List<Char>? = null): String  
 ```
 

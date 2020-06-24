@@ -43,7 +43,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
     private val mListAdapter by lazy {
         SearchableListAdapter(
             requireContext(),
-            R.layout.item_searchable_list_pref,
+            R.layout.item_searchable_list_pref_customcomponents,
             mEntriesList
         )
     }
@@ -82,7 +82,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         super.onPrepareDialogBuilder(builder)
         
         val contentView =
-            activity?.layoutInflater?.inflate(R.layout.dialog_searchable_list_preference, null)
+            activity?.layoutInflater?.inflate(R.layout.dialog_searchable_list_preference_customcomponents, null)
                 ?.apply {
                     // Populate the list and add click listener
                     findViewById<ListView>(R.id.list)?.apply {
@@ -103,12 +103,12 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                             @DrawableRes val backgroundDrawable: Int
                             
                             if (isInSelected) {
-                                drawableEnd = R.drawable.ic_list_preference_item_checked
+                                drawableEnd = R.drawable.ic_list_preference_item_checked_customcomponents
                                 backgroundDrawable = R.color.bg_searchable_list_item_activated
                                 mSelectedEntries.add(selectedEntry.saveString)
                             } else {
                                 drawableEnd = 0
-                                backgroundDrawable = R.drawable.sl_bg_item_searchable_pref
+                                backgroundDrawable = R.drawable.sl_bg_item_searchable_pref_customcomponents
                                 mSelectedEntries.remove(selectedEntry.saveString)
                             }
                             
@@ -196,12 +196,12 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                     
                     val isInSelected = item.saveString in mSelectedEntries
                     
-                    val drawableEnd = if (isInSelected) R.drawable.ic_list_preference_item_checked else 0
+                    val drawableEnd = if (isInSelected) R.drawable.ic_list_preference_item_checked_customcomponents else 0
                     it.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
                     
                     it.background = it.context.getDrawable(
                         if (isInSelected) R.color.bg_searchable_list_item_activated
-                        else R.drawable.sl_bg_item_searchable_pref
+                        else R.drawable.sl_bg_item_searchable_pref_customcomponents
                     )
                     
                     it.tag = item

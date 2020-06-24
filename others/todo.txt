@@ -9,6 +9,15 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.16
+
+    [DONE] Add getNamedVersion to get short version name from BuildConfig version name
+
+    [DONE] Rename resource files (layout, drawable, color, provider) files so they don't inadvertently conflict with host application file names
+
+
+---------
+
 v. 0.1.15
 
     [DONE] Add View extension methods

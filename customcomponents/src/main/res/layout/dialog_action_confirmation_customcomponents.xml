@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         android:divider="@null"
         android:scrollbars="vertical"
-        tools:listitem="@layout/item_action_confirmation_list" />
+        tools:listitem="@layout/item_action_confirmation_list_customcomponents" />
     
 </LinearLayout>

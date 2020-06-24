@@ -16,7 +16,7 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:lineSpacingMultiplier">1.12</item>
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
-        <item name="android:textCursorDrawable">@drawable/cursor_search_pref_input</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_search_pref_input_customcomponents</item>
     </style>
     
     <style name="CustomComponents.TimePreferenceDialogContent" parent="CustomComponentsTheme">
@@ -34,8 +34,8 @@
     </style>
     
     <style name="CustomComponents.DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/sl_text_color_confirmation_dialog_button</item>
-        <item name="rippleColor">@color/sl_ripple_color_confirmation_dialog_button</item>
+        <item name="android:textColor">@color/sl_text_color_confirmation_dialog_button_customcomponents</item>
+        <item name="rippleColor">@color/sl_ripple_color_confirmation_dialog_button_customcomponents</item>
     </style>
 
 </resources>

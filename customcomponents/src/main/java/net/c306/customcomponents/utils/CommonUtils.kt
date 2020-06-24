@@ -13,6 +13,7 @@ import androidx.core.content.FileProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.*
+import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
@@ -226,6 +227,22 @@ object CommonUtils {
         return if (model.toLowerCase(Locale.ENGLISH).startsWith(manufacturer.toLowerCase(Locale.ENGLISH)))
             model
         else "$manufacturer $model"
+    }
+    
+    
+    /**
+     * Returns the version number from [versionName] string.
+     * Input version name is in format `yyyy.mmdd.VMaj.VMin[.vOther...]`. This method returns
+     * `VMaj.Vmin` as a [BigDecimal]. If input version name is not in expected format, the
+     * method returns -1
+     * @param versionName Host application's `BuildConfig.VERSION_NAME`
+     */
+    fun getNamedVersion(versionName: String): BigDecimal {
+        return Regex("^\\d{4}\\.\\d{4}\\.(\\d+?\\.\\d+?)(?:\\D|$)")
+            .find(versionName)
+            ?.groupValues
+            ?.get(1)
+            ?.toBigDecimal() ?: BigDecimal("-1")
     }
     
     

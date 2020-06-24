@@ -14,7 +14,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceDialogFragmentCompat
-import kotlinx.android.synthetic.main.item_upgraded_list_preference.view.*
+import kotlinx.android.synthetic.main.item_upgraded_list_preference_customcomponents.view.*
 import net.c306.customcomponents.R
 
 internal class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
@@ -82,7 +82,7 @@ internal class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCo
     override fun onPrepareDialogBuilder(builder: AlertDialog.Builder?) {
         super.onPrepareDialogBuilder(builder)
         
-        val contentView = activity?.layoutInflater?.inflate(R.layout.dialog_upgraded_list_preference, null)?.apply {
+        val contentView = activity?.layoutInflater?.inflate(R.layout.dialog_upgraded_list_preference_customcomponents, null)?.apply {
             
             // Populate the list and add click listener
             findViewById<ListView>(R.id.list)?.apply {
@@ -143,12 +143,12 @@ internal class UpgradedListPreferenceDialogFragment : PreferenceDialogFragmentCo
     
     
     internal class EntryAdapter(context: Context, list: Array<UpgradedListPreference.Entry>, private val selectedEntry: Int)
-        : ArrayAdapter<UpgradedListPreference.Entry>(context, R.layout.item_upgraded_list_preference, list) {
+        : ArrayAdapter<UpgradedListPreference.Entry>(context, R.layout.item_upgraded_list_preference_customcomponents, list) {
         
         private val mInflater: LayoutInflater = LayoutInflater.from(context)
         
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            return (convertView ?: mInflater.inflate(R.layout.item_upgraded_list_preference, null)).apply {
+            return (convertView ?: mInflater.inflate(R.layout.item_upgraded_list_preference_customcomponents, null)).apply {
                 
                 val item = getItem(position) ?: return@apply
                 

@@ -57,7 +57,7 @@ class TimePreference : DialogPreference {
     }
     
     
-    override fun getDialogLayoutResource() = R.layout.pref_dialog_time
+    override fun getDialogLayoutResource() = R.layout.pref_dialog_time_customcomponents
     
     
     internal fun persistIntValue(value: Int) {

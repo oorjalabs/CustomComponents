@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_update_notes.*
+import kotlinx.android.synthetic.main.fragment_update_notes_customcomponents.*
 import net.c306.customcomponents.R
 import net.c306.customcomponents.utils.CommonUtils.LOG_TAG
 import net.c306.customcomponents.utils.dpToFloat
@@ -40,7 +40,7 @@ class UpdateNotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_update_notes, container, false)
+        return inflater.inflate(R.layout.fragment_update_notes_customcomponents, container, false)
     }
     
     @SuppressLint("SetJavaScriptEnabled")

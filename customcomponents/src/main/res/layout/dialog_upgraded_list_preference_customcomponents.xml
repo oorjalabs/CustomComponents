@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:choiceMode="singleChoice"
         android:divider="@null"
-        tools:listitem="@layout/item_upgraded_list_preference" />
+        tools:listitem="@layout/item_upgraded_list_preference_customcomponents" />
 
     <TextView
         android:id="@+id/message"

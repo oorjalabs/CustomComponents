@@ -294,7 +294,7 @@ object CenteredToast {
 fun TextView.addBackButton(onTouchCallback: () -> Unit) {
     setPadding(resources.dpToFloat(16).toInt(), Direction.LEFT)
     setCompoundDrawablesRelativeWithIntrinsicBounds(
-        R.drawable.ic_arrow_back,
+        R.drawable.ic_arrow_back_customcomponents,
         0,
         0,
         0

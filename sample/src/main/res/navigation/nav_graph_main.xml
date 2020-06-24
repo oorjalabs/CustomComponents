@@ -24,12 +24,12 @@
     <fragment
         android:id="@+id/updateNotesFragment"
         android:name="net.c306.customcomponents.updatenotes.UpdateNotesFragment"
-        tools:layout="@layout/fragment_update_notes"
+        tools:layout="@layout/fragment_update_notes_customcomponents"
         android:label="UpdateNotesFragment" />
     <dialog
         android:id="@+id/confirmationDialog"
         android:name="net.c306.customcomponents.confirmation.ConfirmationDialog"
-        tools:layout="@layout/dialog_action_confirmation"
+        tools:layout="@layout/dialog_action_confirmation_customcomponents"
         android:label="ConfirmationDialog" />
     <action android:id="@+id/action_global_confirmationDialog" app:destination="@id/confirmationDialog"/>
 </navigation>

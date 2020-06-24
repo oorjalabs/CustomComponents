@@ -48,7 +48,7 @@ class ConfirmationDialog : DialogFragment() {
         
         // Inflate and set the layout for the dialog (Pass null as the parent view because its going in the dialog layout)
         val contentView =
-            activity?.layoutInflater?.inflate(R.layout.dialog_action_confirmation, null)?.apply {
+            activity?.layoutInflater?.inflate(R.layout.dialog_action_confirmation_customcomponents, null)?.apply {
                 
                 // Show message
                 findViewById<TextView>(R.id.action_confirmation_message)?.text = args.dialogMessage
@@ -62,7 +62,7 @@ class ConfirmationDialog : DialogFragment() {
                         visibility = View.VISIBLE
                         adapter = ArrayAdapter(
                             context,
-                            R.layout.item_action_confirmation_list,
+                            R.layout.item_action_confirmation_list_customcomponents,
                             args.list
                         )
                     }
