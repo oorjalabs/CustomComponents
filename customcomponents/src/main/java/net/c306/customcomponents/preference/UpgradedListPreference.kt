@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import androidx.annotation.Keep
 import androidx.core.content.res.TypedArrayUtils
 import androidx.preference.ListPreference
+import androidx.preference.Preference
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -39,11 +40,14 @@ class UpgradedListPreference : ListPreference {
         val dividerBelow: Boolean = false
     ) : Parcelable
     
-    var entries: Array<Entry>? = null
     private var mValue: String? = null
     private var mSummary: String? = null
     private var mValueSet: Boolean = false
+    var entries: Array<Entry>? = null
+    /** Optional message to display at bottom of list in preference dialog. */
     var message: String? = null
+    /** Optional summary to display when preference is disabled. */
+    var disabledSummary: CharSequence? = null
     
     init {
         summaryProvider = SimpleSummaryProvider.getInstance()
@@ -60,20 +64,34 @@ class UpgradedListPreference : ListPreference {
         }
     }
     
+    /**
+     * Returns the summary of this preference.
+     * If preference is disabled, and a [disabledSummary] has been set, returns that.
+     * If a [Preference.SummaryProvider] has been set for this preference, it will be used to
+     * provide the summary returned by this method
+     */
     override fun getSummary(): CharSequence {
-        if (summaryProvider != null) {
-            return summaryProvider!!.provideSummary(this)
+        
+        return when {
+            // If disabled and disabled summary is set, return that
+            !isEnabled && disabledSummary != null -> disabledSummary!!
+            
+            // If summary provider is available, return value from it
+            summaryProvider != null -> summaryProvider!!.provideSummary(this)
+            
+            // If no internal summary is set, return summary from super
+            mSummary == null -> super.getSummary()
+            
+            // Format and return internal summary
+            else -> {
+                val summary = super.getSummary()
+                val formattedString = String.format(mSummary!!, entry ?: "")
+                
+                if (TextUtils.equals(formattedString, summary)) summary
+                else formattedString
+            }
         }
-        val entry = entry
-        val summary = super.getSummary()
-        if (mSummary == null) {
-            return summary
-        }
-        val formattedString = String.format(mSummary!!, entry ?: "")
-        if (TextUtils.equals(formattedString, summary)) {
-            return summary
-        }
-        return formattedString
+        
     }
     
     /**

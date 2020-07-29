@@ -54,6 +54,23 @@ class SettingsFragment : CustomPreferenceFragment() {
             message = "Test message to show at bottom of preference dialog"
         }
         
+        findPreference<UpgradedListPreference>("test_list_preference_disabled")?.run {
+            val disableEntryIndex = dummyList.size - 2
+            val entryList: List<UpgradedListPreference.Entry> =
+                dummyList.mapIndexed { index, s ->
+                    UpgradedListPreference.Entry(
+                        entry = s,
+                        value = s,
+                        enabled = index != disableEntryIndex,
+                        dividerBelow = index == 2
+                    )
+                }
+            
+            entries = entryList.toTypedArray()
+            message = "Test message to show at bottom of preference dialog"
+            disabledSummary = "This summary shows only when preference is disabled"
+        }
+        
         // Test multi select list preference
         findPreference<SearchableMultiSelectListPreference>("test_searchable_list_preference")?.run {
             
@@ -73,7 +90,7 @@ class SettingsFragment : CustomPreferenceFragment() {
             entryValues = entryList.map { it.saveString }.toTypedArray()
             noneSelectedSummary = "Nothing selected."
             message = "Test message to show at bottom of preference dialog"
-            
+            disabledSummary = "This summary only shows when preference is disabled"
         }
         
     }

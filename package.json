@@ -1,0 +1,28 @@
+{
+  "name": "customcomponents",
+  "version": "1.0.0",
+  "description": "Custom components used across my Android projects",
+  "main": "updatenotes/gulpfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityabhaskar/CustomComponents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adityabhaskar/CustomComponents/issues"
+  },
+  "homepage": "https://github.com/adityabhaskar/CustomComponents#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-decomment": "^0.2.0",
+    "gulp-markdown": "^5.1.0"
+  }
+}

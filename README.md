@@ -44,7 +44,7 @@ Otherwise, use `CustomPreferenceUtils.displayPreferenceDialog` method to let the
     }
 ```
 
-[Customisable resource values](/customcomponents/src/main/java/net/c306/customcomponents/preference)
+[Customisable resource values and attributes](/customcomponents/src/main/java/net/c306/customcomponents/preference/README.md)
 
 ### Update notes fragment
 

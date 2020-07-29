@@ -9,6 +9,13 @@
             app:summary="%s"
             app:title="Test list preference" />
         
+        <net.c306.customcomponents.preference.UpgradedListPreference
+            app:defaultValue="sort_order_default_129310716349370374"
+            app:key="test_list_preference_disabled"
+            app:enabled="false"
+            app:summary="%s"
+            app:title="Test list preference" />
+        
         <net.c306.customcomponents.preference.SearchableMultiSelectListPreference
             app:key="test_searchable_list_preference"
             app:summary="%s"

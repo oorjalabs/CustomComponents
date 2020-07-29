@@ -24,9 +24,14 @@ class SearchableMultiSelectListPreference: MultiSelectListPreference {
     constructor(context: Context, attrs:AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
     var entries: Array<Entry>? = null
+    /** Optional message to display at bottom of list in preference dialog. */
     var message: String? = null
+    /** Optional string to display in preference dialog when there are no items */
     var emptyViewText: String? = null
+    /** Optional summary to display when preference is enabled but no entry is selected. */
     var noneSelectedSummary: String? = null
+    /** Optional summary to display when preference is disabled. */
+    var disabledSummary: CharSequence? = null
     
     @Parcelize
     data class Entry(
@@ -41,13 +46,18 @@ class SearchableMultiSelectListPreference: MultiSelectListPreference {
     ): Parcelable
 
     override fun getSummary(): CharSequence {
-        return if (values.isEmpty()) {
-            noneSelectedSummary ?: ""
-        } else {
-            entries
-                ?.filter { it.saveString in values }
-                ?.joinToString(", ") { it.summaryDisplayName }
-                ?: values.joinToString(", ")
+        return when {
+            
+            !isEnabled && disabledSummary != null -> disabledSummary!!
+            
+            values.isEmpty() -> noneSelectedSummary ?: ""
+            
+            else             -> {
+                entries
+                    ?.filter { it.saveString in values }
+                    ?.joinToString(", ") { it.summaryDisplayName }
+                    ?: values.joinToString(", ")
+            }
         }
     }
 

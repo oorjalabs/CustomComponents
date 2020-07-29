@@ -9,6 +9,20 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.17
+
+    [DONE] Gulp
+        [X] Replace gulp-markdown-it with gulp-markdown
+        [X] Add gulp-decomment
+        [X] Init npm and package.json
+
+    [DONE] Add optional disabled state summary
+        [X] UpgradedListPreference
+        [X] SearchableMultiSelectListPreference
+        [X] Update preferences readme with customisable attributes
+
+---------
+
 v. 0.1.16
 
     [DONE] Add getNamedVersion to get short version name from BuildConfig version name
