@@ -16,4 +16,8 @@
     
     <dimen name="min_touch_size">48dp</dimen>
     
+    <item name="icon_alpha_default" format="float" type="dimen">0.56</item>
+    <item name="icon_alpha_coloured" format="float" type="dimen">1.0</item>
+    <item name="icon_alpha_disabled" format="float" type="dimen">0.24</item>
+    
 </resources>
