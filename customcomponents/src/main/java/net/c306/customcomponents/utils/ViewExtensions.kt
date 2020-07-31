@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package net.c306.customcomponents.utils
 
 import android.annotation.SuppressLint
@@ -9,6 +11,7 @@ import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -273,6 +276,7 @@ fun MaterialButton.setRightIcon() {
 }
 
 object CenteredToast {
+    @Suppress("MemberVisibilityCanBePrivate")
     fun makeText(context: Context, string: CharSequence, duration: Int): Toast {
         return Toast.makeText(context, string, duration).apply {
             (view.findViewById<View>(android.R.id.message) as TextView).gravity =
@@ -318,3 +322,13 @@ fun TextView.addBackButton(onTouchCallback: () -> Unit) {
     
 }
 
+
+internal fun View.hideKeyboard() {
+    (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
+        ?.hideSoftInputFromWindow(windowToken, 0)
+}
+
+internal fun View.showKeyboard() {
+    (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
+        ?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+}
