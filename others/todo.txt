@@ -9,6 +9,12 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.22
+
+    [DONE] Updated material and appcompat libraries
+
+---------
+
 v. 0.1.20/21
 
     [DONE] Added View.hideKeyboard and View.showKeyboard extension functions
