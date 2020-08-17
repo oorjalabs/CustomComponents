@@ -9,6 +9,15 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.23
+
+    [DONE] Add more standard dimens
+
+    [DONE] Update View.hideKeyboard and View.showKeyboard extension functions to also request/clear focus
+
+
+---------
+
 v. 0.1.22
 
     [DONE] Updated material and appcompat libraries
