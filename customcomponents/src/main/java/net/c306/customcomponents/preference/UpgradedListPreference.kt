@@ -19,6 +19,7 @@ import kotlinx.android.parcel.Parcelize
  * Useful for showing default and custom list items.
  * Uses @see [UpgradedListPreferenceDialogFragment] to display preference.
  */
+@Deprecated("Use `SearchableListPreference` instead with `enableMultiSelect` set to `false`")
 class UpgradedListPreference : ListPreference {
     
     constructor(context : Context) : this(context, null)

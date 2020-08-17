@@ -2,6 +2,7 @@ package net.c306.customcomponents.preference
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,29 +12,35 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceDialogFragmentCompat
+import kotlinx.android.synthetic.main.item_searchable_list_pref_customcomponents.view.*
 import net.c306.customcomponents.R
 import java.util.*
 import kotlin.collections.ArrayList
 
-internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
+internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragmentCompat() {
     
     companion object {
-        fun newInstance(key: String): SearchableMultiSelectListPreferenceDialogFragment =
-            SearchableMultiSelectListPreferenceDialogFragment().apply {
+        @Suppress("unused")
+        fun newInstance(key: String): SearchableListPreferenceDialogFragment =
+            SearchableListPreferenceDialogFragment().apply {
                 arguments = Bundle(1).apply {
                     putString(ARG_KEY, key)
                 }
             }
         
-        private const val SAVE_STATE_SELECTED = "SearchableMultiSelectListPreference.selected"
-        private const val SAVE_ENTRIES = "SearchableMultiSelectListPreference.entries"
+        private const val SAVE_STATE_SELECTED = "SearchableListPreference.selected"
+        private const val SAVE_ENTRIES = "SearchableListPreference.entries"
+        
+        private val SELECTED_ITEM_BG_RES = R.color.bg_searchable_list_item_activated
+        private val UNSELECTED_ITEM_BG_RES = R.drawable.sl_bg_item_searchable_pref_customcomponents
     }
     
-    private var mEntries: Array<SearchableMultiSelectListPreference.Entry>? = null
+    private var mEntries: Array<SearchableListPreference.Entry>? = null
     
     private val mEntriesList by lazy {
-        mutableListOf<SearchableMultiSelectListPreference.Entry>().apply {
+        mutableListOf<SearchableListPreference.Entry>().apply {
             mEntries?.let { addAll(it) }
         }
     }
@@ -43,7 +50,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
     private val mListAdapter by lazy {
         SearchableListAdapter(
             requireContext(),
-            R.layout.item_multi_select_searchable_list_pref_customcomponents,
+            R.layout.item_searchable_list_pref_customcomponents,
             mEntriesList
         )
     }
@@ -57,7 +64,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         super.onCreate(savedInstanceState)
         
         if (savedInstanceState == null) {
-            check(preference.entries != null) { "SearchableMultiSelectListPreference requires an entries array." }
+            check(preference.entries != null) { "SearchableListPreference requires an entries array." }
             mEntries = preference.entries
             mSelectedEntries.clear()
             mSelectedEntries.addAll(preference.values)
@@ -67,9 +74,9 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                 mSelectedEntries.addAll(it)
             }
             savedInstanceState.getParcelableArray(SAVE_ENTRIES)?.let { savedEntries ->
-                if (savedEntries.all { it is SearchableMultiSelectListPreference.Entry }) {
+                if (savedEntries.all { it is SearchableListPreference.Entry }) {
                     @Suppress("UNCHECKED_CAST")
-                    mEntries = savedEntries as Array<SearchableMultiSelectListPreference.Entry>
+                    mEntries = savedEntries as Array<SearchableListPreference.Entry>
                 }
             }
         }
@@ -82,44 +89,65 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         super.onPrepareDialogBuilder(builder)
         
         val contentView =
-            activity?.layoutInflater?.inflate(R.layout.dialog_searchable_multi_select_list_preference_customcomponents, null)
+            activity?.layoutInflater?.inflate(R.layout.dialog_searchable_list_preference_customcomponents, null)
                 ?.apply {
                     // Populate the list and add click listener
                     findViewById<ListView>(R.id.list)?.apply {
-                        choiceMode = ListView.CHOICE_MODE_MULTIPLE
+                        choiceMode =
+                            if (preference.enableMultiSelect) ListView.CHOICE_MODE_MULTIPLE
+                            else ListView.CHOICE_MODE_SINGLE
                         adapter = mListAdapter
                         
-                        setOnItemClickListener { _, v, _, _ ->
+                        setOnItemClickListener { _, v, position, _ ->
+    
+                            if (mEntries?.get(position)?.enabled == false) {
+                                return@setOnItemClickListener
+                            }
                             
-                            val view = v as TextView
+                            val view = v as LinearLayout
                             
                             val selectedEntry =
-                                view.tag as SearchableMultiSelectListPreference.Entry
+                                view.tag as SearchableListPreference.Entry
                             
                             // We are toggling entries, so using negation
-                            val isInSelected = selectedEntry.saveString !in mSelectedEntries
+                            val isNotInSelected = selectedEntry.value !in mSelectedEntries
                             
                             @DrawableRes val drawableEnd: Int
                             @DrawableRes val backgroundDrawable: Int
                             
-                            if (isInSelected) {
-                                drawableEnd = R.drawable.ic_list_preference_item_checked_customcomponents
-                                backgroundDrawable = R.color.bg_searchable_list_item_activated
-                                mSelectedEntries.add(selectedEntry.saveString)
-                            } else {
-                                drawableEnd = 0
-                                backgroundDrawable = R.drawable.sl_bg_item_searchable_pref_customcomponents
-                                mSelectedEntries.remove(selectedEntry.saveString)
+                            if (!preference.enableMultiSelect) {
+                                // If single select mode, clear all previous entries on new entry selection
+                                mSelectedEntries.clear()
                             }
                             
-                            view.background = context.getDrawable(backgroundDrawable)
+                            if (isNotInSelected) {
+                                drawableEnd = R.drawable.ic_list_preference_item_checked_customcomponents
+                                backgroundDrawable = SELECTED_ITEM_BG_RES
+                                mSelectedEntries.add(selectedEntry.value)
+                            } else {
+                                drawableEnd = 0
+                                backgroundDrawable = UNSELECTED_ITEM_BG_RES
+                                mSelectedEntries.remove(selectedEntry.value)
+                            }
                             
-                            view.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                0,
-                                0,
-                                drawableEnd,
-                                0
-                            )
+                            with(view.text) {
+                                background = ContextCompat.getDrawable(context, backgroundDrawable)
+                                
+                                setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                    0,
+                                    0,
+                                    drawableEnd,
+                                    0
+                                )
+                            }
+                            
+                            if (!preference.enableMultiSelect) {
+                                // Clicking on an item simulates the positive button click, and dismisses
+                                // the dialog.
+                                this@SearchableListPreferenceDialogFragment.onClick(dialog,
+                                                                                  DialogInterface.BUTTON_POSITIVE)
+                                dialog?.dismiss()
+                            }
                             
                         }
                     }
@@ -139,6 +167,10 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                         addTextChangedListener(mSearchTextWatcher)
                     }
                     
+                    // Hide filter search if preference attribute unset
+                    findViewById<View>(R.id.search_wrapper)?.visibility =
+                        if (preference.showSearch) View.VISIBLE else View.GONE
+                    
                     // Set empty view
                     findViewById<TextView>(R.id.empty_view).apply {
                         mEmptyView = this
@@ -150,13 +182,19 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         builder?.apply {
             setTitle(preference.title)
             setView(contentView)
+            
+            if (!preference.enableMultiSelect) {
+                // The typical interaction for list-based dialogs is to have click-on-an-item dismiss the
+                // dialog instead of the user having to press 'Ok'.
+                setPositiveButton(null, null)
+            }
         }
         
     }
     
     
-    override fun getPreference(): SearchableMultiSelectListPreference {
-        return super.getPreference() as SearchableMultiSelectListPreference
+    override fun getPreference(): SearchableListPreference {
+        return super.getPreference() as SearchableListPreference
     }
     
     
@@ -179,8 +217,8 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
     inner class SearchableListAdapter(
         context: Context,
         private val resource: Int,
-        list: MutableList<SearchableMultiSelectListPreference.Entry>
-    ) : ArrayAdapter<SearchableMultiSelectListPreference.Entry>(context, resource, list) {
+        list: MutableList<SearchableListPreference.Entry>
+    ) : ArrayAdapter<SearchableListPreference.Entry>(context, resource, list) {
         
         private var mFilter = ProjectFilter(list)
         private val mInflater: LayoutInflater = LayoutInflater.from(context)
@@ -188,24 +226,38 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             return (convertView ?: mInflater.inflate(resource, null)).apply {
                 
-                (this as? TextView)?.let {
+                val item = getItem(position) ?: return@apply
+                
+                isEnabled = item.enabled
+                
+                with (text) {
+    
+                    isEnabled = item.enabled
+    
+                    text = item.entry
                     
-                    val item = getItem(position) ?: return@let
+                    val isInSelected = item.value in mSelectedEntries
                     
-                    it.text = item.listDisplayString
+                    val drawableEnd =
+                        if (isInSelected) R.drawable.ic_list_preference_item_checked_customcomponents
+                        else 0
+                    setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
                     
-                    val isInSelected = item.saveString in mSelectedEntries
-                    
-                    val drawableEnd = if (isInSelected) R.drawable.ic_list_preference_item_checked_customcomponents else 0
-                    it.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
-                    
-                    it.background = it.context.getDrawable(
-                        if (isInSelected) R.color.bg_searchable_list_item_activated
-                        else R.drawable.sl_bg_item_searchable_pref_customcomponents
+                    background = ContextCompat.getDrawable(
+                        context,
+                        if (isInSelected) SELECTED_ITEM_BG_RES
+                        else if (!isEnabled) android.R.color.transparent
+                        else UNSELECTED_ITEM_BG_RES
                     )
-                    
-                    it.tag = item
                 }
+                
+                // Set divider colour if `dividerBelow` is true, and not last item
+                divider.setBackgroundColor(
+                    if (item.dividerBelow && position < count - 1) context.getColor(R.color.upgraded_list_divider)
+                    else context.getColor(android.R.color.transparent)
+                )
+                
+                tag = item
             }
         }
         
@@ -213,10 +265,10 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
         override fun getFilter(): Filter = mFilter
         
         
-        private inner class ProjectFilter(objects: MutableList<SearchableMultiSelectListPreference.Entry>) :
+        private inner class ProjectFilter(objects: MutableList<SearchableListPreference.Entry>) :
             Filter() {
             
-            private val sourceList: ArrayList<SearchableMultiSelectListPreference.Entry> =
+            private val sourceList: ArrayList<SearchableListPreference.Entry> =
                 ArrayList(objects)
             
             override fun performFiltering(chars: CharSequence): FilterResults {
@@ -249,7 +301,7 @@ internal class SearchableMultiSelectListPreferenceDialogFragment : PreferenceDia
                 clear()
                 
                 @Suppress("UNCHECKED_CAST")
-                addAll(results.values as MutableList<SearchableMultiSelectListPreference.Entry>)
+                addAll(results.values as MutableList<SearchableListPreference.Entry>)
                 notifyDataSetChanged()
             }
         }

@@ -6,9 +6,8 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="0dp">
-    
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_wrapper"
         style="@style/CustomComponents.UnderlinedDenseTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,9 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:choiceMode="multipleChoice"
         android:divider="@null"
-        tools:listitem="@layout/item_searchable_list_pref_customcomponents" />
-    
+        android:listSelector="@null"
+        tools:listitem="@layout/item_multi_select_searchable_list_pref_customcomponents" />
+
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"

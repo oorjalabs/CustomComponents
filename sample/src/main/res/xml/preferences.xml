@@ -3,23 +3,28 @@
     
     <PreferenceCategory app:title="Test preferences">
         
+        <net.c306.customcomponents.preference.SearchableListPreference
+            app:defaultValues="Elsa,Granny"
+            app:disabledSummary="Preference is disabled"
+            app:emptyViewText="No entries. Tap here to create a new one!"
+            app:key="searchable_list_preference_single_search"
+            app:message="Test message to show at bottom of preference dialog"
+            app:multiSelect="false"
+            app:noneSelectedSummary="Nothing selected!"
+            app:showSearch="true"
+            app:title="List preference with search" />
+        
+        <net.c306.customcomponents.preference.SearchableListPreference
+            app:defaultValues="Elsa"
+            app:emptyViewText=""
+            app:key="searchable_list_preference_single_search_disabled"
+            app:title="Disabled list preference with search" />
+        
         <net.c306.customcomponents.preference.UpgradedListPreference
             app:defaultValue="sort_order_default_129310716349370374"
             app:key="test_list_preference"
             app:summary="%s"
             app:title="Test list preference" />
-        
-        <net.c306.customcomponents.preference.UpgradedListPreference
-            app:defaultValue="sort_order_default_129310716349370374"
-            app:key="test_list_preference_disabled"
-            app:enabled="false"
-            app:summary="%s"
-            app:title="Test list preference" />
-        
-        <net.c306.customcomponents.preference.SearchableMultiSelectListPreference
-            app:key="test_searchable_list_preference"
-            app:summary="%s"
-            app:title="Test searchable multi select list preference" />
         
         <net.c306.customcomponents.preference.TimePreference
             app:defaultValue="510"
@@ -27,10 +32,9 @@
             app:title="Test time picker preference" />
         
         <EditTextPreference
-            app:title="Sample edit text preference"
             app:key="test_edit_text"
-            />
-        
+            app:title="Sample edit text preference" />
+    
     </PreferenceCategory>
 
 </PreferenceScreen>

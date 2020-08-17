@@ -13,6 +13,7 @@ import kotlinx.android.parcel.Parcelize
  * entries.
  * Uses @see [SearchableMultiSelectListPreferenceDialogFragment] to display preference.
  */
+@Deprecated("Use `SearchableListPreference` instead with `enableMultiSelect` set to `true`")
 class SearchableMultiSelectListPreference: MultiSelectListPreference {
     constructor(context : Context) : this(context, null)
 

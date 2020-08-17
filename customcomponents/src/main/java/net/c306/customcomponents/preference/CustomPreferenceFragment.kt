@@ -57,6 +57,15 @@ abstract class CustomPreferenceFragment: PreferenceFragmentCompat() {
                     }
                 }
             
+                is SearchableListPreference -> {
+                    SearchableListPreferenceDialogFragment.newInstance(preference.key).run {
+                        fragmentManager?.let {
+                            setTargetFragment(targetFragment, 0)
+                            show(it, "android.support.v7.preference.PreferenceFragment.DIALOG")
+                        }
+                    }
+                }
+            
                 else                                   -> return false
             
             }

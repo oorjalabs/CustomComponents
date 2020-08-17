@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import net.c306.customComponentsSample.R
 import net.c306.customcomponents.preference.CustomPreferenceFragment
+import net.c306.customcomponents.preference.SearchableListPreference
 import net.c306.customcomponents.preference.UpgradedListPreference
-import net.c306.customcomponents.preference.SearchableMultiSelectListPreference
 
 /**
  * Test settings fragment
@@ -37,6 +37,45 @@ class SettingsFragment : CustomPreferenceFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        // Searchable single select list preference, with attributes set from xml
+        findPreference<SearchableListPreference>("searchable_list_preference_single_search")?.run {
+            val disableEntryIndex = dummyList.size - 2
+            val entryList: List<SearchableListPreference.Entry> =
+                dummyList.mapIndexed { index, s ->
+                    SearchableListPreference.Entry(
+                        entry = s,
+                        value = s,
+                        enabled = index != disableEntryIndex,
+                        dividerBelow = index == 2
+                    )
+                }
+            
+            entries = entryList.toTypedArray()
+        }
+        
+        // Disabled non-searchable multi select list preference, with attributes set from code
+        findPreference<SearchableListPreference>("searchable_list_preference_single_search_disabled")?.run {
+            val disableEntryIndex = dummyList.size - 2
+            val entryList: List<SearchableListPreference.Entry> =
+                dummyList.mapIndexed { index, s ->
+                    SearchableListPreference.Entry(
+                        entry = s,
+                        value = s,
+                        enabled = index != disableEntryIndex,
+                        dividerBelow = index == 2
+                    )
+                }
+            
+            entries = entryList.toTypedArray()
+            message = "Test message to show at bottom of preference dialog"
+            disabledSummary = "Preference is disabled."
+            emptyViewText = "No entries. Tap here to create a new one!"
+            noneSelectedSummary = "No entries selected"
+            enableMultiSelect = true
+            showSearch = false
+            isEnabled = false
+        }
+        
         // Test list preference
         findPreference<UpgradedListPreference>("test_list_preference")?.run {
             val disableEntryIndex = dummyList.size - 2
@@ -52,45 +91,6 @@ class SettingsFragment : CustomPreferenceFragment() {
             
             entries = entryList.toTypedArray()
             message = "Test message to show at bottom of preference dialog"
-        }
-        
-        findPreference<UpgradedListPreference>("test_list_preference_disabled")?.run {
-            val disableEntryIndex = dummyList.size - 2
-            val entryList: List<UpgradedListPreference.Entry> =
-                dummyList.mapIndexed { index, s ->
-                    UpgradedListPreference.Entry(
-                        entry = s,
-                        value = s,
-                        enabled = index != disableEntryIndex,
-                        dividerBelow = index == 2
-                    )
-                }
-            
-            entries = entryList.toTypedArray()
-            message = "Test message to show at bottom of preference dialog"
-            disabledSummary = "This summary shows only when preference is disabled"
-        }
-        
-        // Test multi select list preference
-        findPreference<SearchableMultiSelectListPreference>("test_searchable_list_preference")?.run {
-            
-            val entryList = dummyList.map {
-                    SearchableMultiSelectListPreference.Entry(
-                        listDisplayString = it,
-                        saveString = it,
-                        listSearchString = it
-                    )
-                }
-            
-            
-            // Set as entries
-            entries = entryList.toTypedArray()
-            
-            // Set as EntryValues
-            entryValues = entryList.map { it.saveString }.toTypedArray()
-            noneSelectedSummary = "Nothing selected."
-            message = "Test message to show at bottom of preference dialog"
-            disabledSummary = "This summary only shows when preference is disabled"
         }
         
     }
