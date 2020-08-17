@@ -324,11 +324,13 @@ fun TextView.addBackButton(onTouchCallback: () -> Unit) {
 
 
 fun View.hideKeyboard() {
+    clearFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
         ?.hideSoftInputFromWindow(windowToken, 0)
 }
 
 fun View.showKeyboard() {
+    requestFocus()
     (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
         ?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
