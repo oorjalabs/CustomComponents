@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-def version_name = "0.1.23"
-def version_code = 10
+def version_name = "0.1.24"
+def version_code = 11
 
 
 android {

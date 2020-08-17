@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="SearchableListPreference">
+        <!-- Whether to show search box in the preference dialog. Default is `true`. -->
+        <attr name="showSearch" format="boolean" />
+        <!-- Whether multiple items can be selected. Default is `true`. -->
+        <attr name="multiSelect" format="boolean" />
+        <!-- [Optional] Default values. Separate multiple values, if multi-select is enabled, with a comma. -->
+        <attr name="defaultValues" format="string" />
+        <!-- [Optional] Text to show in preference dialog when there are no entries. -->
+        <attr name="emptyViewText" format="string" />
+        <!-- [Optional] Summary to show when preference is disabled. -->
+        <attr name="disabledSummary" format="string" />
+        <!-- [Optional] Summary to show when no entry is selected. -->
+        <attr name="noneSelectedSummary" format="string" />
+        <!-- [Optional] Information message to show below the list in preference dialog. -->
+        <attr name="message" format="string" />
+    </declare-styleable>
+
+</resources>
