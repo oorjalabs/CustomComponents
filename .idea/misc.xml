@@ -9,6 +9,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="customcomponents/src/main/res/layout/dialog_searchable_list_preference_customcomponents.xml" value="0.24583333333333332" />
+        <entry key="customcomponents/src/main/res/layout/fragment_update_notes_customcomponents.xml" value="0.24583333333333332" />
         <entry key="customcomponents/src/main/res/layout/item_searchable_list_pref_customcomponents.xml" value="0.24583333333333332" />
       </map>
     </option>
