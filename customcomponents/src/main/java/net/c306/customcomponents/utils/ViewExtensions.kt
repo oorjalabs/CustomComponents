@@ -6,6 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.MotionEvent
@@ -14,6 +15,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
@@ -22,6 +24,7 @@ import androidx.core.view.marginTop
 import androidx.core.widget.TextViewCompat
 import com.google.android.material.button.MaterialButton
 import net.c306.customcomponents.R
+import net.c306.customcomponents.utils.CommonUtils.LOG_TAG
 import kotlin.math.max
 
 /**
@@ -65,6 +68,13 @@ fun Context.getAndroidAttributeId(id: Int): Int {
     val typedValue = TypedValue()
     theme.resolveAttribute(id, typedValue, true)
     return typedValue.resourceId
+}
+
+
+@SuppressLint("ResourceType")
+fun Context.getColorAsString(@ColorRes color: Int): String {
+    return getString(color)
+        .replace(Regex("^(#FF)(.*)$", RegexOption.IGNORE_CASE), "#$2")
 }
 
 
@@ -279,8 +289,12 @@ object CenteredToast {
     @Suppress("MemberVisibilityCanBePrivate")
     fun makeText(context: Context, string: CharSequence, duration: Int): Toast {
         return Toast.makeText(context, string, duration).apply {
-            (view.findViewById<View>(android.R.id.message) as TextView).gravity =
-                Gravity.CENTER
+            try {
+                    (view?.findViewById<View>(android.R.id.message) as? TextView)?.gravity = Gravity.CENTER
+                    setGravity(Gravity.CENTER, 0, 0)
+            } catch (e: Throwable) {
+                Log.v(LOG_TAG, "Cannot center toast")
+            }
         }
     }
     

@@ -108,5 +108,21 @@ class SearchableListPreference(context: Context, attrs:AttributeSet?, defStyleAt
             }
         }
     }
-
+    
+    override fun setDefaultValue(defaultValue: Any?) {
+        
+        if (defaultValue !is String) {
+            super.setDefaultValue(defaultValue)
+            return
+        }
+        
+        val previousValue = values
+    
+        // Set default value
+        if (previousValue.isNullOrEmpty()) {
+            values = setOf(defaultValue)
+        }
+        
+    }
+    
 }

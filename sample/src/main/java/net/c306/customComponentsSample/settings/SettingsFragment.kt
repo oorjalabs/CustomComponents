@@ -5,7 +5,6 @@ import android.view.View
 import net.c306.customComponentsSample.R
 import net.c306.customcomponents.preference.CustomPreferenceFragment
 import net.c306.customcomponents.preference.SearchableListPreference
-import net.c306.customcomponents.preference.UpgradedListPreference
 
 /**
  * Test settings fragment
@@ -77,11 +76,11 @@ class SettingsFragment : CustomPreferenceFragment() {
         }
         
         // Test list preference
-        findPreference<UpgradedListPreference>("test_list_preference")?.run {
+        findPreference<SearchableListPreference>("test_list_preference")?.run {
             val disableEntryIndex = dummyList.size - 2
-            val entryList: List<UpgradedListPreference.Entry> =
+            val entryList: List<SearchableListPreference.Entry> =
                 dummyList.mapIndexed { index, s ->
-                    UpgradedListPreference.Entry(
+                    SearchableListPreference.Entry(
                         entry = s,
                         value = s,
                         enabled = index != disableEntryIndex,
