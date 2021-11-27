@@ -25,6 +25,13 @@ android {
 
         consumerProguardFiles 'consumer-rules.pro'
     }
+    buildTypes {
+        release {
+            debuggable false
+            shrinkResources false
+            minifyEnabled false
+        }
+    }
 }
 
 dependencies {
@@ -67,6 +74,9 @@ project.afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
+                groupId = "com.github.adityabhaskar"
+                artifactId = 'customcomponents'
+                version = android.defaultConfig.versionName
             }
         }
     }
