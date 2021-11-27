@@ -9,7 +9,7 @@ v. 0.1.X
 
 ---------
 
-v. 0.1.26
+v. 0.1.27
 
     [DONE] Updated targetSdk to 31
     [DONE] Updated dependencies
