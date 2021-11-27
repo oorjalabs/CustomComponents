@@ -1,2 +1,6 @@
 jdk:
   - openjdk11
+install:
+  - ./gradlew :customcomponents:build :customcomponents:publishToMavenLocal
+  - find . -name "*.aar"
+  
