@@ -30,7 +30,7 @@ class UpdateNotesViewModel : ViewModel() {
         _title.value = text
     }
     
-    private val _contentResourceId = MutableLiveData<@RawRes Int>()
+    private val _contentResourceId = MutableLiveData<Int>()
     val contentResourceId: LiveData<Int> = _contentResourceId
     
     /**

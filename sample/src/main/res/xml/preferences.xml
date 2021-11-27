@@ -20,7 +20,9 @@
             app:key="searchable_list_preference_single_search_disabled"
             app:title="Disabled list preference with search" />
         
-        <net.c306.customcomponents.preference.UpgradedListPreference
+        <net.c306.customcomponents.preference.SearchableListPreference
+            app:showSearch="false"
+            app:multiSelect="false"
             app:defaultValue="sort_order_default_129310716349370374"
             app:key="test_list_preference"
             app:summary="%s"
