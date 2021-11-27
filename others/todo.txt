@@ -9,6 +9,17 @@ v. 0.1.X
 
 ---------
 
+v. 0.1.26
+
+    [DONE] Updated targetSdk to 31
+    [DONE] Updated dependencies
+    [DONE] Fixed centered toast
+    [DONE] Updated Gradle and Kotlin versions
+    [DONE] Replaced `jcenter` with `mavenCentral`
+
+
+---------
+
 v. 0.1.24
 
     [DONE] Added `SearchableListPreference`
