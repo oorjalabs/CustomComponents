@@ -6,7 +6,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.core.content.res.TypedArrayUtils
 import androidx.preference.MultiSelectListPreference
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Searchable MultiSelectListPreference with a search field added to search through large list of
