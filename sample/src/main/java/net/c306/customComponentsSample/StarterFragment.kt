@@ -2,6 +2,7 @@ package net.c306.customComponentsSample
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import net.c306.customComponentsSample.databinding.FragmentStarterBinding
 import net.c306.customcomponents.confirmation.ConfirmationDialog
 import net.c306.customcomponents.updatenotes.UpdateNotesViewModel
+import net.c306.customcomponents.utils.CenteredToast
 import net.c306.customcomponents.utils.CommonUtils
 
 /**
@@ -84,8 +86,8 @@ class StarterFragment : Fragment(R.layout.fragment_starter) {
         }
         
         binding.toastClipboard.setOnClickListener {
-            val clipboardText = CommonUtils.readFromClipboard(it.context)
-            Toast.makeText(it.context, clipboardText, Toast.LENGTH_SHORT).show()
+            val clipboardText = CommonUtils.readFromClipboard(it.context) ?: return@setOnClickListener
+            CenteredToast.makeText(it.context, clipboardText, Toast.LENGTH_SHORT, Gravity.CENTER).show()
         }
         
         binding.logcatAsFile.setOnClickListener {
@@ -117,7 +119,7 @@ class StarterFragment : Fragment(R.layout.fragment_starter) {
             if (it.requestCode == 1098) {
                 // Filter our own requests with request codes
                 val choice = "You chose ${if (it.result) "to be" else "not to be"}"
-                Toast.makeText(requireContext(), choice, Toast.LENGTH_SHORT).show()
+                CenteredToast.makeText(requireContext(), choice, Toast.LENGTH_SHORT).show()
             }
             
             // Reset the view model once done

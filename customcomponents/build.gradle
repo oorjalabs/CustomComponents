@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-def version_name = "0.1.29"
+def version_name = "0.1.30"
 def version_code = 11
 
 
