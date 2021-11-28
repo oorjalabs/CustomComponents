@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.GravityInt
 import androidx.annotation.StringRes
 import androidx.core.view.marginBottom
 import androidx.core.view.marginLeft
@@ -286,20 +287,41 @@ fun MaterialButton.setRightIcon() {
 }
 
 object CenteredToast {
+    /**
+     * Make a toast with text centered in the toast body.
+     *
+     * @param gravity Optionally also change location of toast on screen to a specified [Gravity]
+     */
     @Suppress("MemberVisibilityCanBePrivate")
-    fun makeText(context: Context, string: CharSequence, duration: Int): Toast {
+    fun makeText(
+        context: Context,
+        string: CharSequence,
+        duration: Int,
+        @GravityInt gravity: Int? = null
+    ): Toast {
         return Toast.makeText(context, string, duration).apply {
             try {
-                    (view?.findViewById<View>(android.R.id.message) as? TextView)?.gravity = Gravity.CENTER
-                    setGravity(Gravity.CENTER, 0, 0)
+                (view?.findViewById<View>(android.R.id.message) as? TextView)?.gravity =
+                    Gravity.CENTER
+                gravity?.let { setGravity(Gravity.CENTER, 0, 0) }
             } catch (e: Throwable) {
                 Log.v(LOG_TAG, "Cannot center toast")
             }
         }
     }
     
-    fun makeText(context: Context, @StringRes stringRes: Int, duration: Int): Toast {
-        return makeText(context, context.resources.getText(stringRes), duration)
+    /**
+     * Make a toast with text centered in the toast body.
+     *
+     * @param gravity Optionally also change location of toast on screen to a specified [Gravity]
+     */
+    fun makeText(
+        context: Context,
+        @StringRes stringRes: Int,
+        duration: Int,
+        @GravityInt gravity: Int? = null
+    ): Toast {
+        return makeText(context, context.resources.getText(stringRes), duration, gravity)
     }
 }
 
