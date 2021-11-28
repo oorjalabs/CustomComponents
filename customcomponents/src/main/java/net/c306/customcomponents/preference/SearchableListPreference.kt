@@ -1,10 +1,8 @@
 package net.c306.customcomponents.preference
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
-import androidx.core.content.res.TypedArrayUtils
 import androidx.preference.MultiSelectListPreference
 import kotlinx.parcelize.Parcelize
 
@@ -13,15 +11,7 @@ import kotlinx.parcelize.Parcelize
  * entries.
  * Uses @see [SearchableListPreferenceDialogFragment] to display preference.
  */
-class SearchableListPreference(context: Context, attrs:AttributeSet?, defStyleAttr: Int, defStyleRes: Int): MultiSelectListPreference(context, attrs, defStyleAttr, defStyleRes) {
-    
-    @Suppress("unused")
-    constructor(context : Context) : this(context, null)
-
-    @SuppressLint("RestrictedApi")
-    constructor(context : Context, attrs : AttributeSet?) : this(context, attrs, TypedArrayUtils.getAttr(context, androidx.preference.R.attr.dialogPreferenceStyle, android.R.attr.dialogPreferenceStyle))
-
-    constructor(context: Context, attrs:AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
+class SearchableListPreference(context: Context, attrs: AttributeSet? = null): MultiSelectListPreference(context, attrs) {
     
     companion object {
         private const val NAMESPACE = "http://schemas.android.com/apk/res-auto"

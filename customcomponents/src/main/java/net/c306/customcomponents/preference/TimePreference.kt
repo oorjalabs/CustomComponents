@@ -13,11 +13,7 @@ import java.util.*
  * Custom preference to pick a time. Value is saved as minutes in [Int].
  * Uses @see [TimePreferenceDialogFragment] to display preference.
  */
-class TimePreference : DialogPreference {
-    
-    constructor(context : Context) : this(context, null)
-    
-    constructor(context : Context, attrs : AttributeSet?) : super(context, attrs)
+class TimePreference(context : Context, attrs : AttributeSet? = null) : DialogPreference(context, attrs) {
     
     internal val calendar: Calendar = Calendar.getInstance()
     
