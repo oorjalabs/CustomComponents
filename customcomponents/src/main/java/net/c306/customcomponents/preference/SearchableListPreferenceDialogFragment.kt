@@ -274,7 +274,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
                 ArrayList(objects)
             
             override fun performFiltering(chars: CharSequence): FilterResults {
-                val filterSeq = chars.toString().toLowerCase(Locale.getDefault())
+                val filterSeq = chars.toString().lowercase(Locale.getDefault())
                 val result = FilterResults()
                 
                 if (filterSeq.isBlank()) {
@@ -290,7 +290,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
                     
                     // The filtering itself
                     val filteredList = sourceList.filter {
-                        it.listSearchString.toLowerCase(Locale.getDefault()).contains(filterSeq)
+                        it.listSearchString.lowercase(Locale.getDefault()).contains(filterSeq)
                     }
                     
                     values = filteredList

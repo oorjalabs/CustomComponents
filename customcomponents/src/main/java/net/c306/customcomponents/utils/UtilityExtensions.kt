@@ -7,7 +7,7 @@ fun String.firstLower(): String {
     
     if (input.isBlank()) return this
     
-    val inLower = input.toLowerCase(Locale.getDefault())
+    val inLower = input.lowercase(Locale.getDefault())
     
     if (input.length == 1)
         return inLower
@@ -21,7 +21,7 @@ fun String.firstUpper(): String {
     
     if (input.isBlank()) return this
     
-    val inUpper = input.toUpperCase(Locale.getDefault())
+    val inUpper = input.uppercase(Locale.getDefault())
     
     if (input.length == 1)
         return inUpper

@@ -2,20 +2,16 @@ package net.c306.customComponentsSample
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_starter.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import net.c306.customComponentsSample.databinding.FragmentStarterBinding
 import net.c306.customcomponents.confirmation.ConfirmationDialog
 import net.c306.customcomponents.updatenotes.UpdateNotesViewModel
 import net.c306.customcomponents.utils.CommonUtils
@@ -23,30 +19,24 @@ import net.c306.customcomponents.utils.CommonUtils
 /**
  * A simple [Fragment] subclass.
  */
-class StarterFragment : Fragment() {
+class StarterFragment : Fragment(R.layout.fragment_starter) {
     
     private val myTag = this.javaClass.name
     
     private val confirmationViewModel by activityViewModels<ConfirmationDialog.ConfirmationViewModel>()
     
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_starter, container, false)
-    }
-    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        val binding = FragmentStarterBinding.bind(view)
+        
         Log.d(LOG_TAG, "print this to log to read later with logcat")
         
-        open_settings.setOnClickListener {
+        binding.openSettings.setOnClickListener {
             findNavController().navigate(R.id.action_openSettings)
         }
         
-        open_update_notes.setOnClickListener {
+        binding.openUpdateNotes.setOnClickListener {
             val updateNotesViewModel = ViewModelProvider(requireActivity()).get(UpdateNotesViewModel::class.java)
             updateNotesViewModel.setTitle("What's new!")
             updateNotesViewModel.setShowOwnToolbar(false)
@@ -54,7 +44,7 @@ class StarterFragment : Fragment() {
             findNavController().navigate(R.id.action_open_updateNotes)
         }
         
-        confirm_something.setOnClickListener {
+        binding.confirmSomething.setOnClickListener {
             val confirmationDetails = ConfirmationDialog.Details(
                 callerTag = myTag,
                 dialogTitle = "Confirm your being",
@@ -67,23 +57,23 @@ class StarterFragment : Fragment() {
             findNavController().navigate(R.id.action_global_confirmationDialog, bundleOf(ConfirmationDialog.KEY_CONFIRMATION_DETAILS to confirmationDetails))
         }
         
-        print_logcat.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                tv_log.text = CommonUtils.getLogCat() ?: "No log received :("
+        binding.printLogcat.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                binding.tvLog.text = CommonUtils.getLogCat() ?: "No log received :("
             }
         }
         
-        print_device_name.setOnClickListener {
+        binding.printDeviceName.setOnClickListener {
             val deviceName = CommonUtils.getDeviceName()
-            tv_device_name.text = deviceName
+            binding.tvDeviceName.text = deviceName
             CommonUtils.copyToClipboard(it.context, deviceName, "Device name")
         }
         
-        print_random_string.setOnClickListener {
-            tv_random_string.text = CommonUtils.generateRandomString()
+        binding.printRandomString.setOnClickListener {
+            binding.tvRandomString.text = CommonUtils.generateRandomString()
         }
     
-        share_model_and_random_string.setOnClickListener {
+        binding.shareModelAndRandomString.setOnClickListener {
             val modelName = CommonUtils.getDeviceName()
             val randomString = CommonUtils.generateRandomString()
             CommonUtils.sendSharingIntent(
@@ -93,13 +83,13 @@ class StarterFragment : Fragment() {
             )
         }
         
-        toast_clipboard.setOnClickListener {
+        binding.toastClipboard.setOnClickListener {
             val clipboardText = CommonUtils.readFromClipboard(it.context)
             Toast.makeText(it.context, clipboardText, Toast.LENGTH_SHORT).show()
         }
         
-        logcat_as_file.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
+        binding.logcatAsFile.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 Log.d(LOG_TAG, "print some more stuff to log tag")
                 
                 val file = CommonUtils.getLogCatFile(it.context)
