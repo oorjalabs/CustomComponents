@@ -224,7 +224,7 @@ object CommonUtils {
     fun getDeviceName(): String {
         val manufacturer = Build.MANUFACTURER
         val model = Build.MODEL
-        return if (model.toLowerCase(Locale.ENGLISH).startsWith(manufacturer.toLowerCase(Locale.ENGLISH)))
+        return if (model.lowercase(Locale.ENGLISH).startsWith(manufacturer.lowercase(Locale.ENGLISH)))
             model
         else "$manufacturer $model"
     }
