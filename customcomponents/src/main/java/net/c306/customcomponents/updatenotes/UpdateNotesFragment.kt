@@ -4,21 +4,19 @@ import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.JavascriptInterface
 import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_update_notes_customcomponents.*
 import net.c306.customcomponents.R
 import net.c306.customcomponents.utils.CommonUtils.LOG_TAG
 import net.c306.customcomponents.utils.dpToFloat
 import net.c306.customcomponents.utils.isNight
 import kotlin.math.roundToInt
+import net.c306.customcomponents.databinding.FragmentUpdateNotesCustomcomponentsBinding as FragmentUpdateNotesCustomcomponentsBinding1
 
 /**
  * ## HOW TO USE
@@ -32,29 +30,24 @@ import kotlin.math.roundToInt
  * 2. Write update notes in the `updatenotes.md` file.
  * 3. Run gulp file—it will generate updatenotes.html, adding js and css, and copy it to raw resources folder
  */
-class UpdateNotesFragment : Fragment() {
+class UpdateNotesFragment : Fragment(R.layout.fragment_update_notes_customcomponents) {
     
     private val viewModel: UpdateNotesViewModel by activityViewModels()
-    
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_update_notes_customcomponents, container, false)
-    }
     
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        val binding = FragmentUpdateNotesCustomcomponentsBinding1.bind(view)
+        
         // Mark notes as seen. Apps can observe this variable to take action when notes are seen
         viewModel.setSeen(true)
         
-        toolbar.setNavigationOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             dismiss()
         }
         
-        with(update_notes_content) {
+        with(binding.updateNotesContent) {
             // Set webView background based on system theme to prevent flashing white on load
             setBackgroundColor(context.getColor(R.color.update_notes_background))
             
@@ -67,7 +60,7 @@ class UpdateNotesFragment : Fragment() {
             if (it == null) return@Observer
             
             // Set toolbar title
-            toolbar?.title = it
+            binding.toolbar.title = it
             
             // Also set activity title, in case using activity level toolbar
             activity?.title = it
@@ -77,14 +70,14 @@ class UpdateNotesFragment : Fragment() {
         viewModel.showOwnToolbar.observe(viewLifecycleOwner, Observer {
             if (it == null) return@Observer
             
-            appbar?.visibility = if (it) View.VISIBLE else View.GONE
+            binding.appbar.visibility = if (it) View.VISIBLE else View.GONE
         })
     
         // Set webView content
         viewModel.contentResourceId.observe(viewLifecycleOwner, Observer {
             if (it == null) return@Observer
             
-            update_notes_content?.loadDataWithBaseURL(
+            binding.updateNotesContent.loadDataWithBaseURL(
                 null,
                 resources.openRawResource(it).bufferedReader().readText(),
                 "text/html; charset=utf-8",

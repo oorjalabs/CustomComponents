@@ -6,6 +6,14 @@ v. 0.1.X
 
     --TBD-- Make resources explicitly public
 
+---------
+
+v. 0.1.28
+
+    [DONE] Add jitpack.yml and `maven-publish` plugin
+    [DONE] Remove `kotlin-extensions` plugin
+    [DONE] Add `kotlin-parcelize` plugin
+    [DONE] Replace synthetic binding with view binding
 
 ---------
 

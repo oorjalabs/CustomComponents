@@ -9,7 +9,7 @@
             app:emptyViewText="No entries. Tap here to create a new one!"
             app:key="searchable_list_preference_single_search"
             app:message="Test message to show at bottom of preference dialog"
-            app:multiSelect="false"
+            app:multiSelect="true"
             app:noneSelectedSummary="Nothing selected!"
             app:showSearch="true"
             app:title="List preference with search" />
@@ -23,7 +23,7 @@
         <net.c306.customcomponents.preference.SearchableListPreference
             app:showSearch="false"
             app:multiSelect="false"
-            app:defaultValue="sort_order_default_129310716349370374"
+            app:defaultValues="sort_order_default_129310716349370374"
             app:key="test_list_preference"
             app:summary="%s"
             app:title="Test list preference" />

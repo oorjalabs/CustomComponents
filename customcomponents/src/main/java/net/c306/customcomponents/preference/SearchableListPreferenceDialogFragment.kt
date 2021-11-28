@@ -14,8 +14,9 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceDialogFragmentCompat
-import kotlinx.android.synthetic.main.item_searchable_list_pref_customcomponents.view.*
 import net.c306.customcomponents.R
+import net.c306.customcomponents.databinding.DialogSearchableListPreferenceCustomcomponentsBinding
+import net.c306.customcomponents.databinding.ItemSearchableListPrefCustomcomponentsBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -50,7 +51,6 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
     private val mListAdapter by lazy {
         SearchableListAdapter(
             requireContext(),
-            R.layout.item_searchable_list_pref_customcomponents,
             mEntriesList
         )
     }
@@ -88,100 +88,96 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
     override fun onPrepareDialogBuilder(builder: AlertDialog.Builder?) {
         super.onPrepareDialogBuilder(builder)
         
-        val contentView =
-            activity?.layoutInflater?.inflate(R.layout.dialog_searchable_list_preference_customcomponents, null)
-                ?.apply {
-                    // Populate the list and add click listener
-                    findViewById<ListView>(R.id.list)?.apply {
-                        choiceMode =
-                            if (preference.enableMultiSelect) ListView.CHOICE_MODE_MULTIPLE
-                            else ListView.CHOICE_MODE_SINGLE
-                        adapter = mListAdapter
-                        
-                        setOnItemClickListener { _, v, position, _ ->
-    
-                            if (mEntries?.get(position)?.enabled == false) {
-                                return@setOnItemClickListener
-                            }
-                            
-                            val view = v as LinearLayout
-                            
-                            val selectedEntry =
-                                view.tag as SearchableListPreference.Entry
-                            
-                            // We are toggling entries, so using negation
-                            val isNotInSelected = selectedEntry.value !in mSelectedEntries
-                            
-                            @DrawableRes val drawableEnd: Int
-                            @DrawableRes val backgroundDrawable: Int
-                            
-                            if (!preference.enableMultiSelect) {
-                                // If single select mode, clear all previous entries on new entry selection
-                                mSelectedEntries.clear()
-                            }
-                            
-                            if (isNotInSelected) {
-                                drawableEnd = R.drawable.ic_list_preference_item_checked_customcomponents
-                                backgroundDrawable = SELECTED_ITEM_BG_RES
-                                mSelectedEntries.add(selectedEntry.value)
-                            } else {
-                                drawableEnd = 0
-                                backgroundDrawable = UNSELECTED_ITEM_BG_RES
-                                mSelectedEntries.remove(selectedEntry.value)
-                            }
-                            
-                            with(view.text) {
-                                background = ContextCompat.getDrawable(context, backgroundDrawable)
-                                
-                                setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                    0,
-                                    0,
-                                    drawableEnd,
-                                    0
-                                )
-                            }
-                            
-                            if (!preference.enableMultiSelect) {
-                                // Clicking on an item simulates the positive button click, and dismisses
-                                // the dialog.
-                                this@SearchableListPreferenceDialogFragment.onClick(dialog,
-                                                                                  DialogInterface.BUTTON_POSITIVE)
-                                dialog?.dismiss()
-                            }
-                            
-                        }
-                    }
-                    
-                    // If dialog message is set, show it below the list else hide it
-                    findViewById<TextView>(R.id.message)?.apply {
-                        if (preference.message != null) {
-                            text = preference.message
-                            visibility = View.VISIBLE
-                        } else {
-                            visibility = View.GONE
-                        }
-                    }
-                    
-                    // Filter on text change
-                    findViewById<EditText>(R.id.search_entries)?.apply {
-                        addTextChangedListener(mSearchTextWatcher)
-                    }
-                    
-                    // Hide filter search if preference attribute unset
-                    findViewById<View>(R.id.search_wrapper)?.visibility =
-                        if (preference.showSearch) View.VISIBLE else View.GONE
-                    
-                    // Set empty view
-                    findViewById<TextView>(R.id.empty_view).apply {
-                        mEmptyView = this
-                        text = preference.emptyViewText
-                    }
-                    
+        val binding = DialogSearchableListPreferenceCustomcomponentsBinding.inflate(layoutInflater)
+        // Populate the list and add click listener
+        with(binding.list) {
+            choiceMode =
+                if (preference.enableMultiSelect) ListView.CHOICE_MODE_MULTIPLE
+                else ListView.CHOICE_MODE_SINGLE
+            adapter = mListAdapter
+            
+            setOnItemClickListener { _, view, position, _ ->
+                
+                if (mEntries?.get(position)?.enabled == false) {
+                    return@setOnItemClickListener
                 }
+                //item_searchable_list_pref_customcomponents
+                val itemBinding = ItemSearchableListPrefCustomcomponentsBinding.bind(view)
+                
+                val selectedEntry = view.tag as SearchableListPreference.Entry
+                
+                // We are toggling entries, so using negation
+                val isNotInSelected = selectedEntry.value !in mSelectedEntries
+                
+                @DrawableRes val drawableEnd: Int
+                @DrawableRes val backgroundDrawable: Int
+                
+                if (!preference.enableMultiSelect) {
+                    // If single select mode, clear all previous entries on new entry selection
+                    mSelectedEntries.clear()
+                }
+                
+                if (isNotInSelected) {
+                    drawableEnd = R.drawable.ic_list_preference_item_checked_customcomponents
+                    backgroundDrawable = SELECTED_ITEM_BG_RES
+                    mSelectedEntries.add(selectedEntry.value)
+                } else {
+                    drawableEnd = 0
+                    backgroundDrawable = UNSELECTED_ITEM_BG_RES
+                    mSelectedEntries.remove(selectedEntry.value)
+                }
+                
+                with(itemBinding.text) {
+                    background = ContextCompat.getDrawable(context, backgroundDrawable)
+                    
+                    setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        0,
+                        0,
+                        drawableEnd,
+                        0
+                    )
+                }
+                
+                if (!preference.enableMultiSelect) {
+                    // Clicking on an item simulates the positive button click, and dismisses
+                    // the dialog.
+                    this@SearchableListPreferenceDialogFragment.onClick(
+                        dialog,
+                        DialogInterface.BUTTON_POSITIVE
+                    )
+                    dialog?.dismiss()
+                }
+                
+            }
+        }
+        
+        // If dialog message is set, show it below the list else hide it
+        with(binding.message) {
+            if (preference.message != null) {
+                text = preference.message
+                visibility = View.VISIBLE
+            } else {
+                visibility = View.GONE
+            }
+        }
+        
+        // Filter on text change
+        with(binding.searchEntries) {
+            addTextChangedListener(mSearchTextWatcher)
+        }
+        
+        // Hide filter search if preference attribute unset
+        binding.searchWrapper.visibility = if (preference.showSearch) View.VISIBLE else View.GONE
+        
+        // Set empty view
+        with(binding.emptyView) {
+            mEmptyView = this
+            text = preference.emptyViewText
+        }
         
         builder?.apply {
             setTitle(preference.title)
-            setView(contentView)
+            setView(binding.root)
             
             if (!preference.enableMultiSelect) {
                 // The typical interaction for list-based dialogs is to have click-on-an-item dismiss the
@@ -216,49 +212,55 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
     
     inner class SearchableListAdapter(
         context: Context,
-        private val resource: Int,
         list: MutableList<SearchableListPreference.Entry>
-    ) : ArrayAdapter<SearchableListPreference.Entry>(context, resource, list) {
+    ) : ArrayAdapter<SearchableListPreference.Entry>(
+        context,
+        R.layout.item_searchable_list_pref_customcomponents,
+        list
+    ) {
         
         private var mFilter = ProjectFilter(list)
         private val mInflater: LayoutInflater = LayoutInflater.from(context)
         
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            return (convertView ?: mInflater.inflate(resource, null)).apply {
-                
-                val item = getItem(position) ?: return@apply
+            val binding =
+                convertView?.let { ItemSearchableListPrefCustomcomponentsBinding.bind(it) }
+                    ?: ItemSearchableListPrefCustomcomponentsBinding.inflate(mInflater)
+            
+            val item = getItem(position) ?: return binding.root
+            
+            binding.root.isEnabled = item.enabled
+            
+            with(binding.text) {
                 
                 isEnabled = item.enabled
                 
-                with (text) {
-    
-                    isEnabled = item.enabled
-    
-                    text = item.entry
-                    
-                    val isInSelected = item.value in mSelectedEntries
-                    
-                    val drawableEnd =
-                        if (isInSelected) R.drawable.ic_list_preference_item_checked_customcomponents
-                        else 0
-                    setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
-                    
-                    background = ContextCompat.getDrawable(
-                        context,
-                        if (isInSelected) SELECTED_ITEM_BG_RES
-                        else if (!isEnabled) android.R.color.transparent
-                        else UNSELECTED_ITEM_BG_RES
-                    )
-                }
+                text = item.entry
                 
-                // Set divider colour if `dividerBelow` is true, and not last item
-                divider.setBackgroundColor(
-                    if (item.dividerBelow && position < count - 1) context.getColor(R.color.upgraded_list_divider)
-                    else context.getColor(android.R.color.transparent)
+                val isInSelected = item.value in mSelectedEntries
+                
+                val drawableEnd =
+                    if (isInSelected) R.drawable.ic_list_preference_item_checked_customcomponents
+                    else 0
+                setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableEnd, 0)
+                
+                background = ContextCompat.getDrawable(
+                    context,
+                    if (isInSelected) SELECTED_ITEM_BG_RES
+                    else if (!isEnabled) android.R.color.transparent
+                    else UNSELECTED_ITEM_BG_RES
                 )
-                
-                tag = item
             }
+            
+            // Set divider colour if `dividerBelow` is true, and not last item
+            binding.divider.setBackgroundColor(
+                if (item.dividerBelow && position < count - 1) context.getColor(R.color.upgraded_list_divider)
+                else context.getColor(android.R.color.transparent)
+            )
+            
+            binding.root.tag = item
+            
+            return binding.root
         }
         
         
