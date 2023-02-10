@@ -32,11 +32,11 @@ android {
     }
     buildTypes {
         release {
-            debuggable false
             shrinkResources false
             minifyEnabled false
         }
     }
+    namespace 'net.c306.customcomponents'
 }
 
 dependencies {
