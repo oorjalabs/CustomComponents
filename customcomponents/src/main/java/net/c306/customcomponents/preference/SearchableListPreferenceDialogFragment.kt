@@ -85,7 +85,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
     
     
     @SuppressLint("InflateParams")
-    override fun onPrepareDialogBuilder(builder: AlertDialog.Builder?) {
+    override fun onPrepareDialogBuilder(builder: AlertDialog.Builder) {
         super.onPrepareDialogBuilder(builder)
         
         val binding = DialogSearchableListPreferenceCustomcomponentsBinding.inflate(layoutInflater)
@@ -142,7 +142,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
                     // Clicking on an item simulates the positive button click, and dismisses
                     // the dialog.
                     this@SearchableListPreferenceDialogFragment.onClick(
-                        dialog,
+                        dialog as DialogInterface,
                         DialogInterface.BUTTON_POSITIVE
                     )
                     dialog?.dismiss()
@@ -175,7 +175,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
             text = preference.emptyViewText
         }
         
-        builder?.apply {
+        builder.apply {
             setTitle(preference.title)
             setView(binding.root)
             
@@ -313,7 +313,7 @@ internal class SearchableListPreferenceDialogFragment : PreferenceDialogFragment
     
     private inner class EditTextWatcher : TextWatcher {
         
-        internal var previousText = ""
+        var previousText = ""
             private set
         
         private val onFilter = Filter.FilterListener {

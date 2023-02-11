@@ -3,15 +3,14 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'maven-publish'
-    id 'kotlin-parcelize'
 }
 
-def version_name = "0.1.30"
-def version_code = 11
+def version_name = "0.1.31"
+def version_code = 12
 
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
