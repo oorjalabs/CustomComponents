@@ -7,7 +7,7 @@ import androidx.preference.PreferenceFragmentCompat
 
 abstract class CustomPreferenceFragment: PreferenceFragmentCompat() {
     
-    override fun onDisplayPreferenceDialog(preference: Preference?) {
+    override fun onDisplayPreferenceDialog(preference: Preference) {
         val fm = parentFragment?.childFragmentManager
         
         if(displayPreferenceDialog(preference, fm, this))
