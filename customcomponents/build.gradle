@@ -23,6 +23,9 @@ android {
     }
     defaultConfig {
         minSdkVersion 26
+
+        version = version_code
+
         aarMetadata {
             minCompileSdk = 26
         }
