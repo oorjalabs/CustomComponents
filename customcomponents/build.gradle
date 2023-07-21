@@ -5,9 +5,8 @@ plugins {
     id 'maven-publish'
 }
 
-def version_name = "0.1.31"
-def version_code = 12
-
+def version_name = "0.1.32"
+def version_code = 13
 
 android {
     compileSdkVersion 33
@@ -24,9 +23,12 @@ android {
     }
     defaultConfig {
         minSdkVersion 26
-        targetSdkVersion 31
+        aarMetadata {
+            minCompileSdk = 26
+        }
 
         version(version_code)
+        group = "com.github.adityabhaskar"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -39,6 +41,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
     namespace 'net.c306.customcomponents'
 }
 
@@ -46,8 +53,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     
     // Testing
     testImplementation 'junit:junit:4.13.2'
@@ -72,15 +78,16 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
+publishing {
+    publications {
+        release(MavenPublication) {
+ 
+            groupId = "com.github.adityabhaskar"
+            artifactId = "customcomponents"
+            version = version_name
+ 
+            afterEvaluate {
                 from components.release
-
-                groupId = "com.github.adityabhaskar"
-                artifactId = "customcomponents"
-                version = version_name
             }
         }
     }

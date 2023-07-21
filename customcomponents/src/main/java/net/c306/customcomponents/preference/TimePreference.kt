@@ -27,6 +27,7 @@ class TimePreference(context : Context, attrs : AttributeSet? = null) : DialogPr
     }
     
     
+    @Deprecated("Deprecated in Java")
     override fun onSetInitialValue(restoreValue: Boolean, defaultValue: Any?) {
         
         val now = run {
