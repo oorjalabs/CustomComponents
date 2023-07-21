@@ -17,11 +17,13 @@ allprojects {
 
 Add the dependency to module `build.gradle`
 
-```gradle
+```groovy
 dependencies {
-    implementation 'com.github.adityabhaskar:CustomComponents:Tag'
+    implementation 'io.github.adityabhaskar:CustomComponents:<version>'
 }
 ```
+See badge above for current `version` number.
+
 
 ## Other usage notes
 

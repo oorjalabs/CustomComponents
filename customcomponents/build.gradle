@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-def version_name = "0.1.32"
+def version_name = "0.1.33"
 def version_code = 13
 
 android {
@@ -26,9 +26,6 @@ android {
         aarMetadata {
             minCompileSdk = 26
         }
-
-        version(version_code)
-        group = "com.github.adityabhaskar"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -82,7 +79,7 @@ publishing {
     publications {
         release(MavenPublication) {
  
-            groupId = "com.github.adityabhaskar"
+            groupId = "io.github.adityabhaskar"
             artifactId = "customcomponents"
             version = version_name
  
