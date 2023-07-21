@@ -27,9 +27,6 @@ android {
             minCompileSdk = 26
         }
 
-        version(version_code)
-        group = "com.github.adityabhaskar"
-
         consumerProguardFiles 'consumer-rules.pro'
     }
     buildTypes {
