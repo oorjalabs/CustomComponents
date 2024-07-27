@@ -15,7 +15,7 @@ junitVersion = "1.1.5"
 androidx-lifecycle = "2.5.1"
 google-material = "1.8.0"
 androidx-navigation = "2.5.3"
-androidx-preference = "1.2.0"
+androidx-preference = "1.2.1"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
