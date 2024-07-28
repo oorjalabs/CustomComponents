@@ -1,6 +1,6 @@
 [versions]
-lib-version-name = "0.1.33"
-lib-version-code = "13"
+lib-version-name = "0.1.34"
+lib-version-code = "14"
 compileSdk = "34"
 minSdk = "26"
 
