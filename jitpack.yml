@@ -1,5 +1,5 @@
 jdk:
-  - openjdk11
+  - openjdk17
 #install:
 #  - ./gradlew :customcomponents:build :customcomponents:publishToMavenLocal
 #  - find . -name "*.aar"
