@@ -5,7 +5,7 @@ compileSdk = "34"
 minSdk = "26"
 
 kotlin = "1.9.25"
-agp = "8.9.1"
+agp = "8.9.2"
 
 
 androidx-appcompat = "1.7.0"
