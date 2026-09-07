@@ -4,7 +4,7 @@ lib-version-code = "14"
 compileSdk = "34"
 minSdk = "26"
 
-kotlin = "1.9.25"
+kotlin = "2.4.20"
 agp = "8.12.3"
 
 
